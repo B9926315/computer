@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.BYX.mapper.BrandMapper">
+    <!--批量删除SQL语句-->
+    <delete id="deleteByIds">
+        delete
+        from computerbrands
+        where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <select id="selectByPageAndCondition" resultType="com.BYX.pojo.brand">
+        select * from computerbrands
+        <where>
+            <if test="brandBeanByCondition.status!=null">
+                and status=#{brandBeanByCondition.status}
+            </if>
+            <if test="brandBeanByCondition.brands!=null and brandBeanByCondition.brands!=''">
+                and brands like #{brandBeanByCondition.brands}
+            </if>
+            <if test="brandBeanByCondition.name!=null and brandBeanByCondition.name!=''">
+                and name like #{brandBeanByCondition.name}
+            </if>
+            <if test="brandBeanByCondition.priceMin!=null">
+                and price &gt;=#{brandBeanByCondition.priceMin}
+            </if>
+            <if test="brandBeanByCondition.priceMax!=null">
+                and price &lt;=#{brandBeanByCondition.priceMax}
+            </if>
+            <if test="brandBeanByCondition.inventoryMax!=null">
+                and inventory &lt;=#{brandBeanByCondition.inventoryMax}
+            </if>
+            <if test="brandBeanByCondition.inventoryMin!=null">
+                and inventory &gt;=#{brandBeanByCondition.inventoryMin}
+            </if>
+            <if test="brandBeanByCondition.setupTime!=null and brandBeanByCondition.setupTime!=''">
+                and createTime &gt;=#{brandBeanByCondition.setupTime}
+            </if>
+            <if test="brandBeanByCondition.deadTime!=null and brandBeanByCondition.deadTime!=''">
+                and createTime &lt;=#{brandBeanByCondition.deadTime}
+            </if>
+        </where>
+        order by ranking desc,price desc limit #{begin},#{size}
+    </select>
+    <select id="selectTotalCountByCondition" resultType="java.lang.Integer">
+        select count(*)
+        from computerbrands
+        <where>
+            <if test="status!=null">
+                and status=#{status}
+            </if>
+            <if test="brands!=null and brands!=''">
+                and brands like #{brands}
+            </if>
+            <if test="name!=null and name!=''">
+                and name like #{name}
+            </if>
+            <if test="priceMin!=null">
+                and price &gt;= #{priceMin}
+            </if>
+            <if test="priceMax!=null">
+                and price &lt;= #{priceMax}
+            </if>
+            <if test="inventoryMax!=null">
+                and inventory &lt;= #{inventoryMax}
+            </if>
+            <if test="inventoryMin!=null">
+                and inventory &gt;= #{inventoryMin}
+            </if>
+            <if test="setupTime!=null and setupTime!=''">
+                and createTime &gt;= #{setupTime}
+            </if>
+            <if test="deadTime!=null and deadTime!=''">
+                and createTime &lt;= #{deadTime}
+            </if>
+        </where>
+    </select>
+</mapper>

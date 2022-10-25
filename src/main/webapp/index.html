@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MDND欢迎您</title>
+    <link rel="shortcut icon" href="images/logo.ico">
+    <link rel="stylesheet" href="CSS/login.css">
+</head>
+<body>
+<img src="images/logo2.png" id="logo">
+<h1 id="titleLogin1">登录MDND</h1>
+<h2 id="titleLogin2">购物超轻松！</h2>
+<div id="loginFormDIV">
+    <h1 id="loginH1Title">欢迎登录</h1>
+    <p id="noUsernameP">没有账号？<a id="GoToRegisterA" href="register.html">注册</a></p>
+    <form action="/computer/user/login" method="post" id="loginForm">
+        <ul id="loginUL">
+            <li>
+                <label for="username" class="labelLoginForm">用户名</label>
+                <input type="text" id="username" class="loginInput" required>
+            </li>
+            <li>
+                <label for="password" class="labelLoginForm">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+                <input type="password" id="password" class="loginInput" required>
+            </li>
+            <li>
+                <label class="labelLoginForm">类&nbsp;&nbsp;&nbsp;&nbsp;别</label>
+                <label for="customer" id="customerLabel">顾客</label><input type="radio" value="1" name="kind" id="customer">
+                <label for="host" id="hostLabel">商家</label><input type="radio" value="0" name="kind" id="host" checked>
+            </li>
+            <li>
+                <p id="usernamePasswordError">用户名或密码错误</p>
+            </li>
+            <li>
+                <input type="button" id="loginSubmitBTN" name="submit" value="登录">
+            </li>
+            <li>
+                <p id="ForgetPasswordP"><a href="" id="ForgetPasswordA">忘记密码？</a></p>
+            </li>
+        </ul>
+    </form>
+</div>
+<div id="successTips" >注册成功</div>
+<script src="JS/axios-0.18.0.js"></script>
+<script src="JS/vue.js"></script>
+<script src="JS/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+
+input {
+    outline: none;
+    border-radius: 6px;
+}
+
+body {
+    background: url("../images/loginBG.png") no-repeat fixed;
+    background-size: 100%;
+}
+/*logo*/
+#logo{
+    width: 90px;
+    position: absolute;
+    top: 62px;
+    left: 89px;
+}
+/*来MDND的标题*/
+#titleLogin1{
+    position: absolute;
+    top: 300px;
+    left: 186px;
+    color: #FFFFFF;
+    font-size: 55px;
+}
+/*购物超轻松*/
+#titleLogin2{
+    position: absolute;
+    top: 380px;
+    left: 230px;
+    color: #FFFFFF;
+    font-size: 45px;
+    font-weight: normal;
+}
+/*登录的最大的盒子*/
+#loginFormDIV{
+    background-color: rgba(255,255,255,.9);
+    width: 430px;
+    height: 490px;
+    position: relative;
+    margin-top: 130px;
+    margin-left: 945px;
+    box-shadow: 10px 10px 10px -4px rgba(255,255,255,.3); /*盒子阴影*/
+    border-radius: 20px;
+}
+/*欢迎登录的h1标题*/
+#loginH1Title{
+    position: absolute;
+    top: 50px;
+    left: 65px;
+}
+/*没有账号去注册小标题*/
+#noUsernameP{
+    position: absolute;
+    top: 100px;
+    left: 65px;
+    font-size: 15px;
+    color: rgb(155, 155, 155);
+}
+/*没有账号去注册小标题中的链接*/
+#GoToRegisterA{
+    color: #2e58ff;
+    text-decoration: none;
+}
+/*无序列表UL*/
+#loginUL{
+    position: absolute;
+    top: 185px;
+    left: 65px;
+}
+#loginFormDIV #loginUL li{
+     margin-bottom: 30px;
+ }
+#loginFormDIV #loginUL li:nth-child(3){
+    margin-bottom: 9px;
+}
+#loginFormDIV #loginUL li:nth-child(4){
+    margin-bottom: 9px;
+}
+#loginFormDIV #loginUL li:nth-child(5){
+    margin-bottom: 5px;
+    /*margin-top: 40px;*/
+}
+/*所有输入框左侧的label标签*/
+#loginFormDIV #loginUL .labelLoginForm{
+    color: #5a5a5b;
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+}
+/*所有的输入框*/
+.loginInput{
+    height: 35px;
+    border: #b1b0b0 solid 1px;
+    background-color: #fff;
+    margin-left: 10px;
+}
+/*当输入框获得焦点后*/
+.loginInput:focus{
+    border-color: #2e58ff;
+    transition: all 0.3s;
+}
+/*用户类别单选框*/
+#customerLabel,#hostLabel{
+    color: #5a5a5b;
+    margin-left: 35px;
+}
+/*用户名或密码错误P标签*/
+#usernamePasswordError{
+    color: #f83535;
+    font-size: 15px;
+    margin-left: 75px;
+    visibility: hidden;  /*隐藏*/
+}
+/*提交按钮*/
+#loginSubmitBTN{
+    cursor: pointer;
+    border: none;
+    background-color: #2e58ff;
+    color: #FFFFFF;
+    width: 275px;
+    height: 45px;
+    font-family: "宋体",'Microsoft YaHei';
+    font-size: 20px;
+    box-shadow: 10px 10px 10px -4px rgba(46,88,255,.3);
+}
+/*忘记密码*/
+#ForgetPasswordA{
+    color: rgb(167, 166, 166);
+    font-size: 15px;
+    text-decoration: none;
+}
+#ForgetPasswordA:hover{
+    color: #f90e0e;
+    transition: all 0.3s;
+}
+
+/*添加成功消息盒子*/
+/*设置容器样式*/
+#successTips{
+    text-align: center;
+    position: absolute;
+    font-family: "宋体";
+    font-size: 20px;
+    width: 150px;
+    height: 30px;
+    left: 600px;
+    top: -50px;
+    padding-top: 8px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: transparent;
+}
+/*通过js动态加载类名实现元素的动画*/
+.showAndHide{
+    animation: showTips 1500ms cubic-bezier(0.5, 0.5, 1, 1);
+}
+/*动画实现*/
+@keyframes showTips {
+    0%{
+        transform: translate(48%,0px);
+        background-color: transparent;
+        color: transparent;
+    }
+    25%{
+        transform: translate(48%,100px);
+        background-color: #f0f9eb;
+        color: #67c23a;
+    }
+    75%{
+        transform: translate(48%,100px);
+        background-color: #f0f9eb;
+        color: #67c23a;
+    }
+    100%{
+        transform: translate(48%,0px);
+        background-color: transparent;
+        color: transparent;
+    }
+}

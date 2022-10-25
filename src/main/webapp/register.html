@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册MDND账号</title>
+    <link rel="stylesheet" href="CSS/register.css">
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <link rel="shortcut icon" href="images/logo.ico">
+</head>
+<body>
+<img id="logo2" src="images/logo2.png">
+<h1 id="title1">想怎么买</h1>
+<h1 id="title2">就怎么买！</h1>
+<div id="registerForm">
+    <h1 id="H1-register">欢迎注册</h1>
+    <p id="GoToLoginSpan">已有账号？<a href="index.html" id="LoginSpan">登录</a></p>
+    <p id="usernameError">用户名或密码错误</p>
+    <form action="#" method="post" id="register-form">
+        <ul id="register-ul">
+            <li>
+                <label for="username" class="labelRegister">用户名</label>
+                <input type="text" id="username" name="username" class="register-form-input" placeholder="10位以下英文数字" autocomplete="on">
+                <span id="Error-username" class="error-span">用户名格式错误</span>
+                <p id="username-exist">用户名已存在</p>
+            </li>
+            <li>
+                <label for="password" class="labelRegister">密码</label>
+                <input type="password" id="password" name="password" class="register-form-input" placeholder="6位以上英文数字">
+                <span id="Error-password" class="error-span">密码格式错误</span>
+            </li>
+            <li>
+                <label for="repassword" class="labelRegister">确认密码</label>
+                <input type="password" id="repassword" name="password" class="register-form-input"
+                       placeholder="请再次输入密码">
+                <span id="Error-repassword" class="error-span">密码不一致</span>
+            </li>
+            <li>
+                <label for="phone" class="labelRegister">联系电话</label>
+                <input type="text" id="phone" name="password" class="register-form-input" placeholder="请输入手机号码">
+                <span id="Error-phone" class="error-span">手机格式错误</span>
+            </li>
+            <li>
+                <label for="email" class="labelRegister">邮箱</label>
+                <input type="text" id="email" name="password" class="register-form-input" placeholder="请输入邮箱">
+                <span id="Error-email" class="error-span">邮箱格式错误</span>
+            </li>
+            <li>
+                <label for="code" class="labelRegister">验证码</label>
+                <input type="text" id="code" name="password" class="register-form-input">
+                <img id="codeImg" src="/computer/user/checkCode" alt="图片无法加载" title="看不清？换一张">
+                <span id="Error-code" class="error-span">验证码错误</span>
+            </li>
+            <li>
+                <input type="button" id="submitBTN" value="注册">
+            </li>
+        </ul>
+    </form>
+</div>
+
+<script src="JS/axios-0.18.0.js"></script>
+<script src="JS/vue.js"></script>
+<script src="element-ui/lib/index.js"></script>
+<script src="JS/register.js"></script>
+</body>
+</html>

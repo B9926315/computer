@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.el-table .warning-row {
+    background: oldlace;
+}
+
+.el-table .success-row {
+    background: #f0f9eb;
+}
+
+.demo-form-inline .el-input{
+    width: 98px;
+}
+.block{
+    display: inline-block;
+    width: 110px;
+    overflow: hidden;
+    border-right: #dcdfe6 solid 1px;
+}
+body{
+    background-color: #f5f5f5;
+}
+.goTop{
+    height: 100vh;
+    overflow-x: hidden;
+}
+#app{
+    width: 1488px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#app .head{
+    margin-bottom: 5px;
+    height: 50px;
+    font-size: 25px;
+    background-color: #f5f5f5;
+}
+#app .head .welcome{
+    float: left;
+    margin-top: 8px;
+}
+#app .head .user{
+    float: right;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+
+

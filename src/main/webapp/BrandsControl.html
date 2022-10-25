@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商家后台管理</title>
+    <link rel="shortcut icon" href="images/logo.ico">
+    <link rel="stylesheet" href="CSS/BrandsControl.css">
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="JS/axios-0.18.0.js"></script>
+    <script src="JS/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+</head>
+<!--商家后台管理界面-->
+<body>
+<div id="app">
+    <div class="head">
+        <div class="welcome">
+            欢迎进入后台管理
+        </div>
+        <div class="user">
+            admin
+        </div>
+    </div>
+    <!--搜索表单-->
+    <el-form :inline="true" :model="brand" class="demo-form-inline" size="small">
+        <el-form-item label="状态">
+            <el-select v-model="brand.status" placeholder="状态" id="select">
+                <el-option label="所有" value=""></el-option>
+                <el-option label="在售" value="1"></el-option>
+                <el-option label="下架" value="0"></el-option>
+            </el-select>
+        </el-form-item>
+        <el-form-item label="品牌">
+            <el-input v-model="brand.brands" placeholder="品牌"></el-input>
+        </el-form-item>
+        <el-form-item label="型号">
+            <el-input v-model="brand.name" placeholder="型号"></el-input>
+        </el-form-item>
+        <el-form-item label="价格" prop="priceM">
+            <el-input v-model="brand.priceMin" type="number" placeholder="最低价格"></el-input>
+        </el-form-item>
+        <el-form-item label="-" prop="priceM">
+            <el-input v-model="brand.priceMax" type="number" placeholder="最高价格"></el-input>
+        </el-form-item>
+        <el-form-item label="库存数量" prop="inventoryM">
+            <el-input v-model="brand.inventoryMin" type="number" placeholder="最小库存"></el-input>
+        </el-form-item>
+        <el-form-item label="-" prop="inventoryM">
+            <el-input v-model="brand.inventoryMax" type="number" placeholder="最大库存"></el-input>
+        </el-form-item>
+        <el-form-item label="上架时间">
+            <template>
+                <div class="block">
+                    <el-date-picker
+                            v-model="brand.setupTime"
+                            align="left"
+                            type="date"
+                            placeholder="最早日期"
+                            :picker-options="pickerOptions">
+                    </el-date-picker>
+                </div>
+                <el-form-item label="-" width="10"></el-form-item>
+                <div class="block">
+                    <el-date-picker
+                            v-model="brand.deadTime"
+                            align="left"
+                            type="date"
+                            placeholder="最迟日期"
+                            :picker-options="pickerOptions">
+                    </el-date-picker>
+                </div>
+            </template>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" @click="onSubmit">查询</el-button>
+        </el-form-item>
+    </el-form>
+    <!--批量删除按钮和新增按钮-->
+    <el-row>
+        <el-button type="danger" size="small" plain @click="deleteByIds">批量删除</el-button>
+        <el-button type="primary" @click="centerDialogVisible = true,clearAdd('brandNEW')" size="small" plain>新增
+        </el-button>
+    </el-row>
+    <br>
+    <!--添加商品对话框-->
+    <el-dialog
+            title="添加商品"
+            :visible.sync="centerDialogVisible"
+            width="30%"
+            center>
+        <!--添加商品表单-->
+        <el-form :model="brandNEW" :rules="rules" ref="brandNEW" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="商品品牌" prop="brands">
+                <el-input v-model="brandNEW.brands"></el-input>
+            </el-form-item>
+            <el-form-item label="商品型号" prop="name">
+                <el-input v-model="brandNEW.name"></el-input>
+            </el-form-item>
+            <el-form-item label="商品价格" prop="price">
+                <el-input v-model="brandNEW.price"></el-input>
+            </el-form-item>
+            <el-form-item label="商品库存" prop="inventory">
+                <el-input v-model="brandNEW.inventory"></el-input>
+            </el-form-item>
+            <el-form-item label="商品排名" prop="ranking">
+                <el-input v-model="brandNEW.ranking"></el-input>
+            </el-form-item>
+            <el-form-item label="商品状态" prop="delivery">
+                <el-switch v-model="brandNEW.status"
+                           active-value="1"
+                           inactive-value="0"></el-switch>
+            </el-form-item>
+            <el-form-item label="商品描述" prop="description">
+                <el-input type="textarea" v-model="brandNEW.description"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('brandNEW')">提交</el-button>
+                <el-button @click="centerDialogVisible = false">取消</el-button>
+            </el-form-item>
+        </el-form>
+    </el-dialog>
+    <!--表格-->
+    <template>
+        <el-table
+                :data="tableData"
+                style="width: 100%"
+                :row-class-name="tableRowClassName"
+                @selection-change="handleSelectionChange">
+            <el-table-column
+                    type="selection"
+                    width="55">
+            </el-table-column>
+            <el-table-column
+                    type="index"
+                    width="50"
+                    :index="indexMethod">
+            </el-table-column>
+            <el-table-column
+                    prop="brands"
+                    label="品牌"
+                    align="center"
+                    width="80">
+            </el-table-column>
+            <el-table-column
+                    prop="name"
+                    label="型号"
+                    align="center"
+                    width="170">
+            </el-table-column>
+            <el-table-column
+                    prop="price"
+                    align="center"
+                    label="价格"
+                    width="70">
+            </el-table-column>
+            <el-table-column
+                    prop="ranking"
+                    align="center"
+                    label="排名"
+                    width="70">
+            </el-table-column>
+            <el-table-column
+                    prop="inventory"
+                    align="center"
+                    label="库存"
+                    width="70">
+            </el-table-column>
+            <el-table-column
+                    prop="status"
+                    align="center"
+                    label="状态"
+                    width="70">
+                <template slot-scope="scope">
+                    <el-tag type="success" effect="dark" v-if="scope.row.status==1">在售</el-tag>
+                    <el-tag type="warning" effect="dark" v-if="scope.row.status==0">下架</el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="description"
+                    align="center"
+                    label="描述">
+            </el-table-column>
+            <el-table-column
+                    prop="createTime"
+                    align="center"
+                    label="上架时间"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="updateTime"
+                    align="center"
+                    label="更新时间"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    align="center"
+                    label="操作"
+                    width="160">
+                <template slot-scope="scope">
+                    <el-row><!--dialog = true-->
+                        <el-button type="primary" @click="dialog = true,updateBrands(scope.$index,scope.row)"
+                                   size="small">修改
+                        </el-button>
+                        <el-button type="danger" @click="deleteById(scope.$index,scope.row)" size="small">删除</el-button>
+                    </el-row>
+                </template>
+            </el-table-column>
+        </el-table>
+    </template>
+    <!--分页工具条-->
+    <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage"
+            :page-sizes="[5, 10, 15, 20]"
+            :page-size="5"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="totalCount">
+    </el-pagination>
+    <!--修改商品属性的抽屉-->
+    <el-drawer
+            title="修改商品属性"
+            :before-close="handleClose"
+            :visible.sync="dialog"
+            direction="ltr"
+            custom-class="demo-drawer"
+            ref="drawer"
+    >
+        <div class="demo-drawer__content">
+            <el-form :model="brandUpdate" :rules="rules" ref="brandUpdate" label-width="100px" class="demo-ruleForm">
+                <el-form-item label="商品品牌" prop="brands">
+                    <el-col :span="20">
+                        <el-input v-model="brandUpdate.brands"></el-input>
+                    </el-col>
+                </el-form-item>
+                <el-form-item label="商品型号" prop="name">
+                    <el-col :span="20">
+                        <el-input v-model="brandUpdate.name"></el-input>
+                    </el-col>
+                </el-form-item>
+                <el-form-item label="商品价格" prop="price">
+                    <el-col :span="20">
+                        <el-input v-model="brandUpdate.price"></el-input>
+                    </el-col>
+                </el-form-item>
+                <el-form-item label="商品库存" prop="inventory">
+                    <el-col :span="20">
+                        <el-input v-model="brandUpdate.inventory"></el-input>
+                    </el-col>
+                </el-form-item>
+                <el-form-item label="商品排名" prop="ranking">
+                    <el-col :span="20">
+                        <el-input v-model="brandUpdate.ranking"></el-input>
+                    </el-col>
+                </el-form-item>
+                <el-form-item label="商品状态" prop="delivery">
+                    <el-switch v-model="brandUpdate.status"
+                               :active-value="1"
+                               :inactive-value="0">
+                    </el-switch>
+                </el-form-item>
+                <el-form-item label="商品描述" prop="description">
+                    <el-col :span="20">
+                        <el-input type="textarea" v-model="brandUpdate.description"></el-input>
+                    </el-col>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="updateBrandSubmit('brandUpdate')">提交</el-button>
+                    <el-button @click="cancelForm">取消</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+    </el-drawer>
+    <!--回到顶部-->
+    <template>
+        <div id="app1">
+            <div id="nav">
+            </div>
+            <router-view/>
+            <el-backtop :bottom="7" :visibility-height="50"></el-backtop>
+        </div>
+    </template>
+</div>
+<script src="JS/BrandsControl.js"></script>
+</body>
+</html>

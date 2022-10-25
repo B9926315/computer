@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #383838;
+}
+
+a:hover {
+    color: #f90e0e;
+}
+
+input {
+    outline: none;
+    border-radius: 6px;
+}
+
+body {
+    background: url("../images/registerBG.png") no-repeat fixed;
+    background-size: 100%;
+}
+/*logo*/
+#logo2{
+    width: 90px;
+    position: absolute;
+    top: 62px;
+    left: 89px;
+}
+/*想怎么买  的标题*/
+#title1{
+    position: absolute;
+    top: 300px;
+    left: 186px;
+    color: #FFFFFF;
+    font-size: 55px;
+}
+/*就怎么买  的标题*/
+#title2{
+    position: absolute;
+    top: 380px;
+    left: 230px;
+    color: #FFFFFF;
+    font-size: 45px;
+    font-weight: normal;
+}
+/*最大的盒子*/
+#registerForm {
+    background: rgba(243, 243, 243, 0.9);
+    width: 450px;
+    height: 660px;
+    margin-top: 55px;
+    margin-left: 935px;
+    box-shadow: 10px 10px 10px -4px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    position: relative;
+}
+/*欢迎注册的h1标题*/
+#H1-register {
+    position: absolute;
+    left: 49px;
+    top: 50px;
+    cursor: default;
+}
+/*"已有账号去登录的span标签"*/
+#GoToLoginSpan {
+    position: absolute;
+    left: 49px;
+    top: 102px;
+    color: #9b9b9b;
+    font-size: 16px;
+}
+
+/*已有账号去登录中“登录”两个字*/
+#GoToLoginSpan #LoginSpan {
+    color: #2e58ff;
+    cursor: pointer;
+}
+/*用户名或密码错误*/
+#usernameError {
+    position: absolute;
+    left: 155px;
+    top: 145px;
+    color: #ee3636;
+    font-size: 16px;
+    cursor: default;
+    visibility: hidden; /*隐藏*/
+}
+/*控制登录的无序列表ul*/
+#register-ul {
+    position: absolute;
+    top: 200px;
+    left: 49px;
+
+}
+/*所有input输入框左侧的提示标签*/
+.labelRegister {
+    color: #5a5a5b;
+    display: inline-block;
+    width: 66px;
+    text-align: right;
+    font-size: 15px;
+}
+/*form表单中所有的input输入框*/
+#registerForm #register-ul .register-form-input {
+    height: 35px;
+    border: #f1f0f0 solid 1px;
+    background-color: #fff;
+    margin-left: 10px;
+    font-size: 16px;
+}
+/*form表单中所有的input输入框聚焦*/
+#registerForm #register-ul .register-form-input:focus {
+    border-color: #2e58ff;
+    transition: all 0.3s;
+}
+/*input输入框placeholder属性*/
+#registerForm #register-ul .register-form-input::placeholder {
+    color: #cccccc;
+    font-size: 15px;
+}
+/*所有li下边距*/
+#registerForm #register-ul li {
+    margin-bottom: 20px;
+}
+/*第一个li下边距*/
+#registerForm #register-ul li:first-child {
+    margin-bottom: 10px;
+}
+/*用户名格式有误提示信息span*/
+.error-span {
+    font-size: 13px;
+    color: #f82b2b;
+    visibility: hidden;  /*隐藏*/
+}
+/*用户名已存在*/
+#username-exist {
+    font-size: 13px;
+    color: #f82b2b;
+    margin-left: 80px;
+    margin-top: 3px;
+    visibility: hidden;  /*隐藏*/
+}
+/*让验证码输入框变小*/
+#registerForm #register-ul li #code {
+    width: 100px;
+}
+/*验证码图片*/
+#codeImg {
+    width: 90px;
+    height: 38px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+/*表单提交按钮*/
+#submitBTN{
+    cursor: pointer;
+    font-family: "宋体","Microsoft YaHei";
+    font-size: 20px;
+    color: #fff;
+    background-color: #2e58ff;
+    border: none;
+    width: 300px;
+    height: 50px;
+    margin-top: 26px;
+    margin-left: 12px;
+    border-radius: 25px;
+    box-shadow: 10px 10px 10px -4px rgba(46,88,255,.3);
+}
+/*让元素显示*/
+.visible{
+    visibility: visible;
+    transition: all 0.3s;
+}
+/*让元素隐藏*/
+.hidden{
+    visibility: hidden;
+    transition: all 0.3s;
+}
