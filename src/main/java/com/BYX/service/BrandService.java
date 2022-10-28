@@ -27,4 +27,12 @@ public interface BrandService {
     PageBean<brand> selectByPage(int currentPage,int pageSize);
 //分页条件查询
     PageBean<brand> selectByPageAndCondition(int currentPage, int pageSize, BrandBeanByCondition brandBeanByCondition);
+    //顾客查询
+    List<brand> customerSelectAll(BrandBeanByCondition brandBeanByCondition);
+    //商品详情页面
+    brand selectGoodsById(int id);
+    //新增订单数据
+    void addGoodsOrder(GoodsOrder goodsOrder);
+    //查询顾客所有的订单
+    List<GoodsOrder> customerSelectAllOrder(String username);
 }

@@ -33,10 +33,17 @@ public class UserServlet extends BaseServlet{
         user.setPassword(md5);
         user loginUSER = userService.login(user.getUsername(), user.getPassword(),user.getKind()+"");
         if (loginUSER!=null){//登录成功
-            HttpSession session = request.getSession();
-            session.setAttribute("username",user.getUsername());
-            response.getWriter().write("succeed");
-        }else{
+            if (loginUSER.getKind()==0){
+                HttpSession session = request.getSession();
+                session.setAttribute("username",user.getUsername());
+                response.getWriter().write("0succeed");
+            }else if (loginUSER.getKind()==1){
+                HttpSession session = request.getSession();
+                session.setAttribute("username",user.getUsername());
+                response.getWriter().write("1succeed");
+            }
+
+        }else {
             response.getWriter().write("fail");
         }
     }

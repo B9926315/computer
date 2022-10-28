@@ -1,11 +1,7 @@
 package com.BYX.mapper;
-
-import com.BYX.pojo.BrandBeanByCondition;
-import com.BYX.pojo.brand;
+import com.BYX.pojo.*;
 import org.apache.ibatis.annotations.*;
-
 import java.util.List;
-
 /**
  * Author   Bai YanXu
  * Date    2022-10-22 - 21:07
@@ -35,4 +31,18 @@ public interface BrandMapper {
     List<brand> selectByPageAndCondition(@Param("begin") int begin,@Param("size")int size,@Param("brandBeanByCondition") BrandBeanByCondition brandBeanByCondition);
     //查询总记录数
     int selectTotalCountByCondition(BrandBeanByCondition brandBeanByCondition);
+    //顾客查询商品
+    List<brand> customerSelectAll(BrandBeanByCondition brandBeanByCondition);
+    //商品详情页面
+    @Select("select * from computerbrands where id=#{id}")
+    brand selectGoodsById(int id);
+    //顾客下单后生成的订单信息,向数据库中加入
+    @Insert("insert into computerorder values (null,#{goodsName},#{goodsId},#{payTime},#{orderNumber},#{number},#{username},#{status},#{name},#{phone},#{address})")
+    void addGoodsOrder(GoodsOrder goodsOrder);
+    //顾客购买该商品后，商品数量减少
+    @Update("update computerbrands set inventory=inventory-#{number} where id=#{goodsId}")
+    void goodsNumberDecrease(@Param("number") int number,@Param("goodsId") int goodsId);
+    //查询顾客所有订单
+    @Select("select * from computerorder where username=#{username} order by payTime desc")
+    List<GoodsOrder> customerSelectAllOrder(String username);
 }

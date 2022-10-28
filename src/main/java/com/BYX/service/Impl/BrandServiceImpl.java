@@ -107,4 +107,51 @@ public class BrandServiceImpl implements BrandService {
         sqlSession.close();
         return pageBean;
     }
+
+    @Override
+    public List<brand> customerSelectAll(BrandBeanByCondition brandBeanByCondition) {
+        SqlSession sqlSession = factory.openSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        String brands = brandBeanByCondition.getBrands();
+        if (brands!=null && brands.length()>0){
+            brandBeanByCondition.setBrands("%"+brands+"%");
+        }
+        String name = brandBeanByCondition.getName();
+        if (name!=null && name.length()>0){
+            brandBeanByCondition.setName("%"+name+"%");
+        }
+        List<brand> brandList = mapper.customerSelectAll(brandBeanByCondition);
+        sqlSession.close();
+        return brandList;
+    }
+
+    @Override
+    public brand selectGoodsById(int id) {
+        SqlSession sqlSession = factory.openSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        brand brandGoods = mapper.selectGoodsById(id);
+        sqlSession.close();
+        return brandGoods;
+    }
+//新增商品订单
+    @Override
+    public void addGoodsOrder(GoodsOrder goodsOrder) {
+        SqlSession sqlSession = factory.openSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        Integer goodsId = goodsOrder.getGoodsId();//商品ID
+        Integer number = goodsOrder.getNumber();//所购数量
+        mapper.addGoodsOrder(goodsOrder);
+        mapper.goodsNumberDecrease(number,goodsId);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+//查询顾客所有订单
+    @Override
+    public List<GoodsOrder> customerSelectAllOrder(String username) {
+        SqlSession sqlSession = factory.openSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        List<GoodsOrder> goodsOrders = mapper.customerSelectAllOrder(username);
+        sqlSession.close();
+        return goodsOrders;
+    }
 }

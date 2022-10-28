@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+#UserTitle {
+    height: 70px;
+    background-color: #333333;
+    color: #b0b094;
+}
+
+/*显示所有的商品的大盒子*/
+#app #big {
+    width: 1350px;
+    margin-left: auto;
+    margin-right: auto;
+    /*background-color: pink;*/
+}
+
+/*单个商品盒子*/
+.goods {
+    width: 250px;
+    height: 300px;
+    background-color: rgb(255, 255, 255);
+    float: left;
+    margin: 10px;
+    cursor: pointer;
+    box-shadow: 7px 7px 7px -2px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+}
+
+.goods:hover {
+    box-shadow: 10px 10px 10px 4px rgba(0, 0, 0, .2);
+    transition: box-shadow .4s;
+}
+
+#h3_brands {
+    font-weight: 400;
+    text-align: center;
+}
+
+#p_name {
+    color: #b5b5b5;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+/*价格*/
+#p_price {
+    color: #ff7417;
+    text-align: center;
+    margin-top: 5px;
+}
+/*顶部导航栏的欢迎语*/
+.welcome {
+    float: left;
+    margin-left: 50px;
+    margin-top: 18px;
+    font-size: 25px;
+}
+/*顶部导航栏的用户名*/
+.username {
+    float: right;
+    margin-right: 50px;
+    margin-top: 18px;
+    font-size: 25px;
+    cursor: pointer;
+}
+/*用来装表单的盒子*/
+#app .searchDIV{
+    text-align: center;
+    margin: 10px;
+}
+/*搜索框*/
+.searchINPUT{
+    width: 100px;
+    height: 25px;
+    outline: none;
+    border: #c0c4cc solid 1px;
+    border-radius: 5px;
+}
+.searchINPUT::placeholder{
+    color: #c0c4cc;
+}
+/*搜索提交按钮*/
+#searchBTN{
+    margin-left: 10px;
+    border: none;
+    height: 30px;
+    width: 66px;
+    border-radius: 5px;
+    background-color: #409eff;
+    color: #FFFFFF;
+    font-size: 15px;
+    cursor: pointer;
+    visibility: hidden;
+}
+/*下拉菜单*/
+.el-dropdown-link {
+    cursor: pointer;
+    color: #b0b094;
+    font-size: 30px;
+}
+.el-icon-arrow-down {
+    font-size: 12px;
+}

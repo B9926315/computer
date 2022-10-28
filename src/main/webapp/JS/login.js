@@ -50,12 +50,20 @@ loginBTN.addEventListener('click',function () {
         url:"http://localhost:8080/computer/user/login",
         data:formData
     }).then(function (resp) {
-        if (resp.data==="succeed"){
+        if (resp.data=="0succeed"){
             let exdate = new Date(); //获取时间
             exdate.setTime(exdate.getTime() + 24 * 60 * 60 * 1000 * 365); //保存的天数
             document.cookie="username="+username+";expires="+ exdate.toGMTString();
             document.cookie="password="+password+";expires="+ exdate.toGMTString();
+            sessionStorage.setItem('username',username);
             location.href="BrandsControl.html";
+        }else if (resp.data=="1succeed"){
+            let exdate = new Date(); //获取时间
+            exdate.setTime(exdate.getTime() + 24 * 60 * 60 * 1000 * 365); //保存的天数
+            document.cookie="username="+username+";expires="+ exdate.toGMTString();
+            document.cookie="password="+password+";expires="+ exdate.toGMTString();
+            sessionStorage.setItem('username',username);
+            location.href="CustomerIndex.html";
         }else {
             document.getElementById("usernamePasswordError").style.visibility="visible";
         }

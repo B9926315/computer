@@ -79,13 +79,51 @@ public class BrandServlet extends BaseServlet{
         //获取查询条件对象
         BufferedReader br = request.getReader();
         String params = br.readLine();
-        System.out.println("前端传回来的："+params);
+        //System.out.println("前端传回来的："+params);
         BrandBeanByCondition brandBeanByCondition = JSON.parseObject(params, BrandBeanByCondition.class);
-        System.out.println("条件查询对象："+brandBeanByCondition.toString());
+        //System.out.println("条件查询对象："+brandBeanByCondition.toString());
         //调用service查询
         PageBean<brand> pageBean = brandService.selectByPageAndCondition(currentPage,pageSize,brandBeanByCondition);
-        System.out.println("发送给前端的："+pageBean.toString());
+        //System.out.println("发送给前端的："+pageBean.toString());
         String jsonString = JSON.toJSONString(pageBean);
+        response.setContentType("text/json;charset=utf-8");
+        response.getWriter().write(jsonString);
+    }
+
+    //顾客查询
+    public void customerSelectAll(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        BufferedReader br = request.getReader();
+        String params = br.readLine();
+        BrandBeanByCondition brandBeanByCondition = JSON.parseObject(params, BrandBeanByCondition.class);
+        List<brand> brands = brandService.customerSelectAll(brandBeanByCondition);
+        String jsonString = JSON.toJSONString(brands);
+        response.setContentType("text/json;charset=utf-8");
+        response.getWriter().write(jsonString);
+    }
+    //商品详情页面
+    public void selectGoodsById(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String _id = request.getParameter("id");
+        int id = Integer.parseInt(_id);
+        brand brand = brandService.selectGoodsById(id);
+        String jsonString = JSON.toJSONString(brand);
+        response.setContentType("text/json;charset=utf-8");
+        response.getWriter().write(jsonString);
+    }
+    //新增商品订单
+    public void addGoodsOrder(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        BufferedReader br = request.getReader();
+        String params = br.readLine();
+        GoodsOrder goodsOrder = JSON.parseObject(params, GoodsOrder.class);
+        brandService.addGoodsOrder(goodsOrder);
+        response.getWriter().write("addOrderSucceed");
+    }
+    //查询顾客所有订单
+    public void customerSelectAllOrder(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String username = request.getParameter("username");
+//        System.out.println("传入的用户名："+username);
+        List<GoodsOrder> goodsOrders = brandService.customerSelectAllOrder(username);
+        String jsonString = JSON.toJSONString(goodsOrders);
+//        System.out.println("返还的集合"+jsonString);
         response.setContentType("text/json;charset=utf-8");
         response.getWriter().write(jsonString);
     }

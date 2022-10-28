@@ -158,26 +158,6 @@ new Vue({
                 description: 'i5-12500H/RTX3050/16G/512G/60Hz',
                 createTime: '2022-10-22 12:23:01',
                 updateTime: '2022-10-23 08:23:56'
-            }, {
-                brands: '联想',
-                name: '拯救者Y7000',
-                price: '5999',
-                ranking: '122',
-                inventory: '5963',
-                status: '1',
-                description: 'i5-12500H/RTX3050/16G/512G/60Hz',
-                createTime: '2022-10-22 12:23:01',
-                updateTime: '2022-10-23 08:23:56'
-            }, {
-                brands: '联想',
-                name: '拯救者Y7000',
-                price: '5999',
-                ranking: '122',
-                inventory: '5963',
-                status: '1',
-                description: 'i5-12500H/RTX3050/16G/512G/60Hz',
-                createTime: '2022-10-22 12:23:01',
-                updateTime: '2022-10-23 08:23:56'
             }]
         }
     },
@@ -311,7 +291,6 @@ new Vue({
                 url:'http://localhost:8080/computer/brand/selectByPageAndCondition?currentPage='+this.currentPage+'&pageSize='+this.pageSize,
                 data:this.brand,
             }).then(function (resp) {
-                // _this.currentPage=1;
                 _this.tableData = resp.data.rows;
     //设置总记录数
                 _this.totalCount=resp.data.totalCount;

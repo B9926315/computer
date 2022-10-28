@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>买买买</title>
+    <link rel="shortcut icon" href="images/logo.ico">
+    <link rel="stylesheet" href="CSS/goodsDisplay.css">
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="JS/axios-0.18.0.js"></script>
+    <script src="JS/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+<!--    正文-->
+    <div class="title">
+        <h1>{{brand.brands}} {{brand.name}}</h1>
+    </div>
+    <div id="goods">
+        <div id="images">
+        <img :src="brand.images" alt="出错了"/>
+        </div>
+        <div id="buy">
+        <h1 id="brandsH1">{{brand.brands}}</h1>
+        <h2 id="nameH2">{{brand.name}} 系列</h2>
+
+        <h3 id="inventoryH3">库存剩余: {{brand.inventory}} 件</h3>
+        <h3 id="descriptionH3">配置: {{brand.description}}</h3>
+        <h2 id="priceH2">￥ {{brand.price}}</h2>
+            <input type="button" value="立即购买" id="buyNowBTN" @click="dialogVisible = true">
+        </div>
+    </div>
+    <!--    购买对话框-->
+    <el-dialog
+            title="订单信息"
+            :visible.sync="dialogVisible"
+            width="30%">
+<!--表单-->
+        <el-form :model="GoodsOrder" :rules="rules" ref="GoodsOrder" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="收货人姓名" prop="name">
+                <el-input v-model="GoodsOrder.name"></el-input>
+            </el-form-item>
+            <el-form-item label="收货人电话" prop="phone">
+                <el-input v-model="GoodsOrder.phone"></el-input>
+            </el-form-item>
+            <el-form-item label="收货地址" prop="address">
+                <el-input v-model="GoodsOrder.address"></el-input>
+            </el-form-item>
+            <el-form-item label="购买数量" prop="number">
+                <template>
+                    <el-input-number v-model="GoodsOrder.number" :min="1" :max="10" label="购买数量"></el-input-number>
+                </template>
+            </el-form-item>
+            <div id="payYuanH2">您需要支付:{{brand.price*GoodsOrder.number}}元</div>
+            <el-button type="primary" @click="submitForm('GoodsOrder')">立即购买</el-button>
+                <el-button @click="dialogVisible = false">取消</el-button>
+            </el-form-item>
+        </el-form>
+    </el-dialog>
+</div>
+<script src="JS/goodsDisplay.js"></script>
+</body>
+</html>

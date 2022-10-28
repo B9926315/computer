@@ -78,4 +78,28 @@
             </if>
         </where>
     </select>
+    <select id="customerSelectAll" resultType="com.BYX.pojo.brand">
+        select * from computerbrands
+        <where>
+            status=1 and inventory>0
+            <if test="brands!=null and brands!=''">
+                and brands like #{brands}
+            </if>
+            <if test="name!=null and name!=''">
+                and name like #{name}
+            </if>
+            <if test="priceMin!=null">
+                and price &gt;= #{priceMin}
+            </if>
+            <if test="priceMax!=null">
+                and price &lt;= #{priceMax}
+            </if>
+            <if test="inventoryMax!=null">
+                and inventory &lt;= #{inventoryMax}
+            </if>
+            <if test="inventoryMin!=null">
+                and inventory &gt;= #{inventoryMin}
+            </if>
+        </where> order by ranking desc ,price desc
+    </select>
 </mapper>

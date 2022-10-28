@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎进入MDND购物平台</title>
+    <link rel="shortcut icon" href="images/logo.ico">
+    <link rel="stylesheet" href="CSS/CustomerIndex.css">
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="JS/axios-0.18.0.js"></script>
+    <script src="JS/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+    <div id="UserTitle">
+        <div class="welcome">
+            欢迎来到MDND购物平台
+        </div>
+        <div class="username">
+            <el-dropdown>
+            <span class="el-dropdown-link">
+            {{username1}}<i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item @click.native="customerOrder()">我的订单</el-dropdown-item>
+                    <el-dropdown-item>账户中心</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
+        </div>
+    </div>
+    <!--搜索表单-->
+    <div class="searchDIV">
+        <form action="#" method="post" :model="brand" id="searchFORM">
+            <label for="brands">品牌</label>
+            <input type="text" id="brands" v-model="brand.brands" class="searchINPUT" placeholder="品牌">
+            <label for="brandName">型号</label>
+            <input type="text" id="brandName" v-model="brand.name" class="searchINPUT" placeholder="型号">
+            <label for="priceMin">价格</label>
+            <input type="number" id="priceMin"  v-model="brand.priceMin" class="searchINPUT" placeholder="最小价格">
+            <label for="priceMax">-</label>
+            <input type="number" id="priceMax" v-model="brand.priceMax" class="searchINPUT" placeholder="最大价格">
+            <label for="inventoryMin">库存</label>
+            <input type="number" id="inventoryMin" v-model="brand.inventoryMin" class="searchINPUT" placeholder="最小库存">
+            <label for="inventoryMax">-</label>
+            <input type="number" id="inventoryMax" v-model="brand.inventoryMax" class="searchINPUT" placeholder="最大库存">
+            <input type="button" id="searchBTN" value="查询" @click="searchGoods('brand')">
+        </form>
+    </div>
+    <div id="big">
+<!--加载商品信息-->
+        <div v-for="t in tableData" class="goods" @click="display(t)" >
+            <img :src="t.images" alt="出错了" width="250px"/>
+            <h3 id="h3_brands">{{t.brands}}</h3>
+            <p id="p_name">{{t.name}}</p>
+            <p id="p_price">{{t.price}}元起</p>
+        </div>
+
+    </div>
+</div>
+<script src="JS/CustomerIndex.js"></script>
+</body>
+</html>
