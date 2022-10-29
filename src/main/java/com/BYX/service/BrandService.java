@@ -35,4 +35,8 @@ public interface BrandService {
     void addGoodsOrder(GoodsOrder goodsOrder);
     //查询顾客所有的订单
     List<GoodsOrder> customerSelectAllOrder(String username);
+    //更新订单状态
+    void updateGoodsOrderStatus(int status,int id);
+    //管理员查询所有订单
+    List<GoodsOrder> selectAdminAllOrder();
 }

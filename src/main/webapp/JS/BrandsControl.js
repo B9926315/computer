@@ -165,6 +165,9 @@ new Vue({
 
 /*所有方法*/
     methods: {
+        orderManage(){
+            window.open("adminOrderAll.html");
+        },
 //显示每页开始的索引
         indexMethod(index) {
             this.currentPage<=0?this.currentPage=1:this.currentPage;
@@ -179,7 +182,7 @@ new Vue({
         },
 //批量删除方法
         deleteByIds(){
-            console.log(this.multipleSelection);
+            //console.log(this.multipleSelection);
             if (this.multipleSelection.length==0){
                 return;
             }
@@ -213,7 +216,6 @@ new Vue({
                     message: '已取消删除'
                 });
             });
-
         },
 //修改商品属性的抽屉的开与关
         handleClose(done) {

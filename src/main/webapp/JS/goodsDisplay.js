@@ -3,6 +3,7 @@ new Vue({
     mounted() {
 //当页面加载完成之后执行的函数
         this.selectSingleGoods();
+        this.getUsername1();
     },
     data() {
         var checkNumber = (rule, value, callback) => {
@@ -13,6 +14,7 @@ new Vue({
             }
         };
         return {
+            username2:'',
             //数选器
             num:1,
             //初始状态购买对话框为隐藏
@@ -38,6 +40,7 @@ new Vue({
                 orderNumber:'',
                 username:'',
                 status:'1',
+                income:''
             },
             //提交购买订单验证规则
             rules: {
@@ -58,6 +61,14 @@ new Vue({
         };
     },
     methods: {
+        customerOrder(){
+            window.open("customerOrder.html?username="+this.username2);
+        },
+        //获取用户名
+        getUsername1(){
+            this.username2=sessionStorage.getItem("username");
+            console.log("用户名："+this.username2);
+        },
         //用户购买商品订单
         submitForm(GoodsOrder) {
             this.$refs[GoodsOrder].validate((valid) => {
@@ -67,6 +78,7 @@ new Vue({
                     this.GoodsOrder.payTime=getFormatDateTime();
                     this.GoodsOrder.orderNumber=this.brand.id+new Date().getTime();
                     this.GoodsOrder.username=this.getUsername();
+                    this.GoodsOrder.income=this.brand.price*this.GoodsOrder.number;
                     console.log(this.GoodsOrder);
                     axios({
                         method:'post',

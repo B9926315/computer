@@ -14,7 +14,18 @@
 <div id="app">
 <!--    正文-->
     <div class="title">
-        <h1>{{brand.brands}} {{brand.name}}</h1>
+        <div id="brandName">{{brand.brands}} {{brand.name}}</div>
+        <div class="username">
+            <el-dropdown>
+            <span class="el-dropdown-link">
+            {{username2}}
+            </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item @click.native="customerOrder()">我的订单</el-dropdown-item>
+                    <el-dropdown-item>账户中心</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
+        </div>
     </div>
     <div id="goods">
         <div id="images">

@@ -2,26 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>个人订单</title>
-  <link rel="shortcut icon" href="images/logo.ico">
-  <link rel="stylesheet" href="CSS/customerOrder.css">
-  <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
-  <script src="JS/axios-0.18.0.js"></script>
-  <script src="JS/vue.js"></script>
-  <script src="element-ui/lib/index.js"></script>
+    <title>后台订单管理</title>
+    <link rel="shortcut icon" href="images/logo.ico">
+    <link rel="stylesheet" href="CSS/adminOrderAll.css">
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="JS/axios-0.18.0.js"></script>
+    <script src="JS/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
 </head>
+<!--商家后台订单管理-->
 <body>
 <div id="app">
-<!--    顶部导航栏-->
+    <!--    顶部导航栏-->
     <div id="UserTitle">
         <div class="welcome">
-            个人订单
-        </div>
-        <div class="username">
-            {{username}}
+            后台订单管理
         </div>
     </div>
-<!--订单展示页面-->
     <div id="orderDisplay">
         <template>
             <el-table
@@ -30,7 +27,7 @@
                     style="width: 100%">
                 <el-table-column
                         type="index"
-                        width="50"
+                        width="40"
                         align="center">
                 </el-table-column>
                 <el-table-column
@@ -54,25 +51,31 @@
                 <el-table-column
                         prop="payTime"
                         label="付款时间"
-                        width="180"
+                        width="170"
                         align="center">
                 </el-table-column>
                 <el-table-column
                         prop="status"
-                        label="当前状态"
+                        label="订单状态"
                         width="80"
                         align="center">
                     <template slot-scope="scope">
                         <el-tag type="danger" effect="dark" v-if="scope.row.status==1">未发货</el-tag>
                         <el-tag type="warning" effect="dark" v-if="scope.row.status==2">路途中</el-tag>
-                        <el-tag type="primary" effect="dark" v-if="scope.row.status==3">待收货</el-tag>
+                        <el-tag type="primary" effect="dark" v-if="scope.row.status==3">已送达</el-tag>
                         <el-tag type="success" effect="dark" v-if="scope.row.status==4">已收货</el-tag>
                     </template>
                 </el-table-column>
                 <el-table-column
                         prop="income"
-                        label="支付金额"
-                        width="100"
+                        label="订单金额"
+                        width="80"
+                        align="center">
+                </el-table-column>
+                <el-table-column
+                        prop="username"
+                        label="付款ID"
+                        width="80"
                         align="center">
                 </el-table-column>
                 <el-table-column
@@ -84,31 +87,31 @@
                 <el-table-column
                         prop="phone"
                         label="电话"
-                        width="150"
+                        width="140"
                         align="center">
                 </el-table-column>
                 <el-table-column
                         prop="address"
                         label="收货地址"
                         align="center"
-                        width="230">
+                        width="200">
                 </el-table-column>
                 <el-table-column
                         label="操作"
                         align="center">
                     <template slot-scope="scope">
-                    <el-row>
-                        <el-button type="success" plain disabled v-if="scope.row.status==4">订单完成</el-button>
-                        <el-button type="primary" plain @click="confirmGoods(scope.row)" v-if="scope.row.status==3">确认收货</el-button>
-                        <el-button type="warning" plain disabled v-if="scope.row.status==2">还在路上</el-button>
-                        <el-button type="danger" plain disabled v-if="scope.row.status==1">还未发货</el-button>
-                    </el-row>
+                        <el-row>
+                            <el-button type="success" plain disabled v-if="scope.row.status==4">订单完成</el-button>
+                            <el-button type="primary" plain disabled v-if="scope.row.status==3">等待收货</el-button>
+                            <el-button type="warning" plain @click="update(scope.row)"  v-if="scope.row.status==2">更新送达</el-button>
+                            <el-button type="danger" plain @click="update(scope.row)"  v-if="scope.row.status==1">现在发货</el-button>
+                        </el-row>
                     </template>
                 </el-table-column>
             </el-table>
         </template>
     </div>
 </div>
-<script src="JS/customerOrder.js"></script>
+<script src="JS/adminOrderAll.js"></script>
 </body>
 </html>

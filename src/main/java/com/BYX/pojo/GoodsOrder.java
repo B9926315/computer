@@ -17,6 +17,15 @@ public class GoodsOrder {
     private String name;//收货人姓名
     private String phone;
     private String address;
+    private Long income;//本单收入
+
+    public Long getIncome() {
+        return income;
+    }
+
+    public void setIncome(Long income) {
+        this.income = income;
+    }
 
     @Override
     public String toString() {
@@ -32,6 +41,7 @@ public class GoodsOrder {
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
+                ", income=" + income +
                 '}';
     }
 

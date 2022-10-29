@@ -21,9 +21,13 @@ body{
     background-color: #333333;
     color: #b0b0b0;
 }
-#app .title h1{
+#app .title #brandName{
+    float: left;
     margin-top: 0;
+    margin-left: 40px;
     font-size: 40px;
+    color: #b0b094;
+    cursor: default;
 }
 #images{
     float: left;
@@ -66,4 +70,15 @@ h1,h2,h3{
     font-size: 25px;
     margin-bottom: 20px;
     text-align: center;
+}
+.username{
+    float: right;
+    color: #b0b094;
+    font-size: 35px;
+    margin-right: 40px;
+}
+.el-dropdown-link{
+    font-size: 30px;
+    color: #b0b094;
+    cursor: pointer;
 }

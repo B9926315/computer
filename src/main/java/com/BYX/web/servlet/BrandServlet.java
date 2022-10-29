@@ -127,4 +127,19 @@ public class BrandServlet extends BaseServlet{
         response.setContentType("text/json;charset=utf-8");
         response.getWriter().write(jsonString);
     }
+    //更新订单状态
+    public void updateGoodsOrderStatus(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        BufferedReader br = request.getReader();
+        String params = br.readLine();
+        GoodsOrder goodsOrder = JSON.parseObject(params, GoodsOrder.class);
+        brandService.updateGoodsOrderStatus(goodsOrder.getStatus(), goodsOrder.getId());
+        response.getWriter().write("updateGoodsOrderStatusSuccess");
+    }
+    //管理员查询所有订单
+    public void selectAdminAllOrder(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        List<GoodsOrder> goodsOrders = brandService.selectAdminAllOrder();
+        String jsonString = JSON.toJSONString(goodsOrders);
+        response.setContentType("text/json;charset=utf-8");
+        response.getWriter().write(jsonString);
+    }
 }

@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#UserTitle {
+    height: 70px;
+    background-color: #333333;
+    color: #b0b094;
+}
+/*顶部导航栏的欢迎语*/
+.welcome {
+    float: left;
+    margin-left: 50px;
+    margin-top: 18px;
+    font-size: 25px;
+}
+/*表格*/
+#orderDisplay{
+    width: 1400px;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 50px;
+}

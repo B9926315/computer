@@ -154,4 +154,22 @@ public class BrandServiceImpl implements BrandService {
         sqlSession.close();
         return goodsOrders;
     }
+//更新订单状态
+    @Override
+    public void updateGoodsOrderStatus(int status, int id) {
+        SqlSession sqlSession = factory.openSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        mapper.updateGoodsOrderStatus(status,id);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Override
+    public List<GoodsOrder> selectAdminAllOrder() {
+        SqlSession sqlSession = factory.openSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        List<GoodsOrder> goodsOrders = mapper.selectAdminAllOrder();
+        sqlSession.close();
+        return goodsOrders;
+    }
 }

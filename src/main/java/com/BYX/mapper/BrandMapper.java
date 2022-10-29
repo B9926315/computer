@@ -37,7 +37,7 @@ public interface BrandMapper {
     @Select("select * from computerbrands where id=#{id}")
     brand selectGoodsById(int id);
     //顾客下单后生成的订单信息,向数据库中加入
-    @Insert("insert into computerorder values (null,#{goodsName},#{goodsId},#{payTime},#{orderNumber},#{number},#{username},#{status},#{name},#{phone},#{address})")
+    @Insert("insert into computerorder values (null,#{goodsName},#{goodsId},#{payTime},#{income},#{orderNumber},#{number},#{username},#{status},#{name},#{phone},#{address})")
     void addGoodsOrder(GoodsOrder goodsOrder);
     //顾客购买该商品后，商品数量减少
     @Update("update computerbrands set inventory=inventory-#{number} where id=#{goodsId}")
@@ -45,4 +45,10 @@ public interface BrandMapper {
     //查询顾客所有订单
     @Select("select * from computerorder where username=#{username} order by payTime desc")
     List<GoodsOrder> customerSelectAllOrder(String username);
+    //改变订单状态
+    @Update("update computerorder set status=#{status} where id=#{id}")
+    void updateGoodsOrderStatus(@Param("status") int status,@Param("id") int id);
+    //管理员查询所有订单
+    @Select("select * from computerorder order by payTime desc ")
+    List<GoodsOrder> selectAdminAllOrder();
 }
