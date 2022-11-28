@@ -28,7 +28,7 @@ export default {
 
   methods: {
     toNestedArr(days) {
-      return rangeArr(days.length / 7).map((_, index) => {
+      return rangeArr(days.length / 7).stringIntegerMap((_, index) => {
         const start = index * 7;
         return days.slice(start, start + 7);
       });
@@ -111,13 +111,13 @@ export default {
       // if range exists, should render days in range.
       if (this.isInRange) {
         const [start, end] = this.range;
-        const currentMonthRange = rangeArr(end.getDate() - start.getDate() + 1).map((_, index) => ({
+        const currentMonthRange = rangeArr(end.getDate() - start.getDate() + 1).stringIntegerMap((_, index) => ({
           text: start.getDate() + index,
           type: 'current'
         }));
         let remaining = currentMonthRange.length % 7;
         remaining = remaining === 0 ? 0 : 7 - remaining;
-        const nextMonthRange = rangeArr(remaining).map((_, index) => ({
+        const nextMonthRange = rangeArr(remaining).stringIntegerMap((_, index) => ({
           text: index + 1,
           type: 'next'
         }));
@@ -127,16 +127,16 @@ export default {
         let firstDay = getFirstDayOfMonth(date);
         firstDay = firstDay === 0 ? 7 : firstDay;
         const firstDayOfWeek = typeof this.firstDayOfWeek === 'number' ? this.firstDayOfWeek : 1;
-        const prevMonthDays = getPrevMonthLastDays(date, firstDay - firstDayOfWeek).map(day => ({
+        const prevMonthDays = getPrevMonthLastDays(date, firstDay - firstDayOfWeek).stringIntegerMap(day => ({
           text: day,
           type: 'prev'
         }));
-        const currentMonthDays = getMonthDays(date).map(day => ({
+        const currentMonthDays = getMonthDays(date).stringIntegerMap(day => ({
           text: day,
           type: 'current'
         }));
         days = [...prevMonthDays, ...currentMonthDays];
-        const nextMonthDays = rangeArr(42 - days.length).map((_, index) => ({
+        const nextMonthDays = rangeArr(42 - days.length).stringIntegerMap((_, index) => ({
           text: index + 1,
           type: 'next'
         }));
@@ -160,7 +160,7 @@ export default {
   render() {
     const thead = this.hideHeader ? null : (<thead>
       {
-        this.weekDays.map(day => <th key={day}>{ day }</th>)
+        this.weekDays.stringIntegerMap(day => <th key={day}>{ day }</th>)
       }
     </thead>);
     return (
@@ -176,14 +176,14 @@ export default {
         }
         <tbody>
           {
-            this.rows.map((row, index) => <tr
+            this.rows.stringIntegerMap((row, index) => <tr
               class={{
                 'el-calendar-table__row': true,
                 'el-calendar-table__row--hide-border': index === 0 && this.hideHeader
               }}
               key={index}>
               {
-                row.map((cell, key) => <td key={key}
+                row.stringIntegerMap((cell, key) => <td key={key}
                   class={ this.getCellClass(cell) }
                   onClick={this.pickDay.bind(this, cell)}>
                   <div class="el-calendar-day">

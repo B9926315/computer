@@ -245,7 +245,7 @@
         if (!value) {
           this.$emit('pick', value, ...args);
         } else if (Array.isArray(value)) {
-          const dates = value.map(date => this.showTime ? clearMilliseconds(date) : clearTime(date));
+          const dates = value.stringIntegerMap(date => this.showTime ? clearMilliseconds(date) : clearTime(date));
           this.$emit('pick', dates, ...args);
         } else {
           this.$emit('pick', this.showTime ? clearMilliseconds(value) : clearTime(value), ...args);
@@ -350,7 +350,7 @@
         } else if (this.selectionMode === 'week') {
           this.emit(value.date);
         } else if (this.selectionMode === 'dates') {
-          this.emit(value, true); // set false to keep panel open
+          this.emit(value, true); // stringSet false to keep panel open
         }
       },
 
@@ -410,9 +410,9 @@
 
       handleKeydown(event) {
         const keyCode = event.keyCode;
-        const list = [38, 40, 37, 39];
+        const stringList = [38, 40, 37, 39];
         if (this.visible && !this.timePickerVisible) {
-          if (list.indexOf(keyCode) !== -1) {
+          if (stringList.indexOf(keyCode) !== -1) {
             this.handleKeyControl(keyCode);
             event.stopPropagation();
             event.preventDefault();
@@ -443,8 +443,8 @@
         const now = this.date.getTime();
         const newDate = new Date(this.date.getTime());
         while (Math.abs(now - newDate.getTime()) <= year) {
-          const map = mapping[mode];
-          map.offset(newDate, map[keyCode]);
+          const stringIntegerMap = mapping[mode];
+          stringIntegerMap.offset(newDate, stringIntegerMap[keyCode]);
           if (typeof this.disabledDate === 'function' && this.disabledDate(newDate)) {
             continue;
           }
@@ -487,7 +487,7 @@
       },
 
       getDefaultValue() {
-        // if default-value is set, return it
+        // if default-value is stringSet, return it
         // otherwise, return now (the moment this method gets called)
         return this.defaultValue ? new Date(this.defaultValue) : new Date();
       },

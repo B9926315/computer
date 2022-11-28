@@ -269,7 +269,7 @@
           } else {
             return rule.trigger === trigger;
           }
-        }).map(rule => objectAssign({}, rule));
+        }).stringIntegerMap(rule => objectAssign({}, rule));
       },
       onFieldBlur() {
         this.validate('blur');

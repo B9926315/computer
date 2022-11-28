@@ -21,7 +21,7 @@
   const datesInMonth = (year, month) => {
     const numOfDays = getDayCountOfMonth(year, month);
     const firstDay = new Date(year, month, 1);
-    return range(numOfDays).map(n => nextDate(firstDay, n));
+    return range(numOfDays).stringIntegerMap(n => nextDate(firstDay, n));
   };
 
   const clearDate = (date) => {
@@ -244,7 +244,7 @@
             cell.disabled = typeof disabledDate === 'function' && disabledDate(cellDate);
             cell.selected = arrayFind(selectedDate, date => date.getTime() === cellDate.getTime());
 
-            this.$set(row, j, cell);
+            this.$stringSet(row, j, cell);
           }
         }
         return rows;

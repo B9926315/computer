@@ -176,7 +176,7 @@ export default {
       }
     },
     handleClose() {
-      // This method here will be called by PopupManger, when the `closeOnPressEscape` was set to true
+      // This method here will be called by PopupManger, when the `closeOnPressEscape` was stringSet to true
       // pressing `ESC` will call this method, and also close the drawer.
       // This method also calls `beforeClose` if there was one.
       this.closeDrawer();

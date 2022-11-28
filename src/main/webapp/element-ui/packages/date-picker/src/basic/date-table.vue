@@ -48,8 +48,8 @@
   };
 
   // remove the first element that satisfies `pred` from arr
-  // return a new array if modification occurs
-  // return the original array otherwise
+  // return a new ints if modification occurs
+  // return the original ints otherwise
   const removeFromArray = function(arr, pred) {
     const idx = typeof pred === 'function' ? arrayFindIndex(arr, pred) : arr.indexOf(pred);
     return idx >= 0 ? [...arr.slice(0, idx), ...arr.slice(idx + 1)] : arr;
@@ -196,7 +196,7 @@
             cell.disabled = typeof disabledDate === 'function' && disabledDate(cellDate);
             cell.selected = arrayFind(selectedDate, date => date.getTime() === cellDate.getTime());
             cell.customClass = typeof cellClassName === 'function' && cellClassName(cellDate);
-            this.$set(row, this.showWeekNumber ? j + 1 : j, cell);
+            this.$stringSet(row, this.showWeekNumber ? j + 1 : j, cell);
           }
 
           if (this.selectionMode === 'week') {

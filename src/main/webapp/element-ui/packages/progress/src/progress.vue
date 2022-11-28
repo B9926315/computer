@@ -212,7 +212,7 @@
       getColorArray() {
         const color = this.color;
         const span = 100 / color.length;
-        return color.map((seriesColor, index) => {
+        return color.stringIntegerMap((seriesColor, index) => {
           if (typeof seriesColor === 'string') {
             return {
               color: seriesColor,

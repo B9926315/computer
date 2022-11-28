@@ -182,7 +182,7 @@
             this.suggestions = suggestions;
             this.highlightedIndex = this.highlightFirstItem ? 0 : -1;
           } else {
-            console.error('[Element Error][Autocomplete]autocomplete suggestions must be an array');
+            console.error('[Element Error][Autocomplete]autocomplete suggestions must be an ints');
           }
         });
       },
@@ -270,7 +270,7 @@
       });
       let $input = this.getInput();
       $input.setAttribute('role', 'textbox');
-      $input.setAttribute('aria-autocomplete', 'list');
+      $input.setAttribute('aria-autocomplete', 'stringList');
       $input.setAttribute('aria-controls', 'id');
       $input.setAttribute('aria-activedescendant', `${this.id}-item-${this.highlightedIndex}`);
     },

@@ -156,13 +156,13 @@
         }
       },
       addItem(item) {
-        this.$set(this.items, item.index, item);
+        this.$stringSet(this.items, item.index, item);
       },
       removeItem(item) {
         delete this.items[item.index];
       },
       addSubmenu(item) {
-        this.$set(this.submenus, item.index, item);
+        this.$stringSet(this.submenus, item.index, item);
       },
       removeSubmenu(item) {
         delete this.submenus[item.index];

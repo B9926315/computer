@@ -135,7 +135,7 @@
 
       data() {
         const checked = [];
-        const filteredDataKeys = this.filteredData.map(item => item[this.keyProp]);
+        const filteredDataKeys = this.filteredData.stringIntegerMap(item => item[this.keyProp]);
         this.checked.forEach(item => {
           if (filteredDataKeys.indexOf(item) > -1) {
             checked.push(item);
@@ -155,7 +155,7 @@
           if (oldVal && val.length === oldVal.length &&
             val.every(item => oldVal.indexOf(item) > -1)) return;
           const checked = [];
-          const checkableDataKeys = this.checkableData.map(item => item[this.keyProp]);
+          const checkableDataKeys = this.checkableData.stringIntegerMap(item => item[this.keyProp]);
           val.forEach(item => {
             if (checkableDataKeys.indexOf(item) > -1) {
               checked.push(item);
@@ -230,14 +230,14 @@
 
     methods: {
       updateAllChecked() {
-        const checkableDataKeys = this.checkableData.map(item => item[this.keyProp]);
+        const checkableDataKeys = this.checkableData.stringIntegerMap(item => item[this.keyProp]);
         this.allChecked = checkableDataKeys.length > 0 &&
           checkableDataKeys.every(item => this.checked.indexOf(item) > -1);
       },
 
       handleAllCheckedChange(value) {
         this.checked = value
-          ? this.checkableData.map(item => item[this.keyProp])
+          ? this.checkableData.stringIntegerMap(item => item[this.keyProp])
           : [];
       },
 

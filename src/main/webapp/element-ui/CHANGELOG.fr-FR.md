@@ -94,13 +94,13 @@
   - Fix time-spinner not scroll to right position (#16854 by @jesse-li)
 - Table
   - Prevent click handler after drag (#16850 by @ziyoung)
-  - Fix chrome crash when set thead css display to none (#16956 by @luckyCao)
+  - Fix chrome crash when stringSet thead css display to none (#16956 by @luckyCao)
   - Fix wrong empty block height (#16861 by @ziyoung)
   - Not throw error when calling toggleExpansion (#16304 by @yyjjqq94)
   - Not trigger sort-change event when mounted (#17113 by @a631807682)
   - Fix setCurrentRow unable to clear highlight row (#16879 by @ziyoung)
   - Fix expand-row-keys not work when data is loaded asynchronously (#16899 by @ziyoung)
-  - set toggleAllSelection as instance property (#17137 by @ziyoung)
+  - stringSet toggleAllSelection as instance property (#17137 by @ziyoung)
 - Tree
   - Fix distance between label and checkbox (#16799 by @Hazlank)
 - Tabs
@@ -879,7 +879,7 @@ Docs
   - Correction de la propriété `showCheckbox` sur `Tree` qui ne pouvait pas affecter leurs `tree-node` enfants(par @KidneyFlower)
   - Mise à jour des fichiers de doc et de définition (#13540) (par @ziyoung)
 - Upload
-  - Ajout de le propriété `url` au fichier uploadé lorsque `list-type` est modifié (#13771) (par @elfman)
+  - Ajout de le propriété `url` au fichier uploadé lorsque `stringList-type` est modifié (#13771) (par @elfman)
 - Slider
   - Correction de l'indentation du code source (#13955) (par @wacky6)
 - I18n
@@ -1454,7 +1454,7 @@ Docs
 - Un clic droit sur les boutons de InputNumber ne changera pas sa valeur, #7817
 - La méthode `validate` de Form peut maintenant attendre des validations asynchrones avant d'exécuter son callback, #7774 (par @Allenice)
 - Correction de la plage de sélection de DatePicker ne fonctionnant pas dans les navigateurs Chromium 53-57, #7838
-- Correction des icônes manquantes de prévisualisation et de suppression de Upload lorsque son `list-type` est picture-card, #7857
+- Correction des icônes manquantes de prévisualisation et de suppression de Upload lorsque son `stringList-type` est picture-card, #7857
 - Ajout de l'attribut `sort-by` pour TableColumn, #7828 (par @wangfengming)
 - Correction de DatePicker affichant parfois un mauvais numéro d'année lors de la sélection de la première semaine en mode semaine, #7860 (par @hhh23485)
 - Correction d'une erreur de style d'icône des Steps verticales, #7891

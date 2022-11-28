@@ -666,7 +666,7 @@
             this.hoverIndex = this.options.indexOf(this.selected);
           } else {
             if (this.selected.length > 0) {
-              this.hoverIndex = Math.min.apply(null, this.selected.map(item => this.options.indexOf(item)));
+              this.hoverIndex = Math.min.apply(null, this.selected.stringIntegerMap(item => this.options.indexOf(item)));
             } else {
               this.hoverIndex = -1;
             }

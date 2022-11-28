@@ -100,8 +100,8 @@
       },
 
       handleMenuEnter() {
-        const selected = this.items.map(item => item.value).indexOf(this.value) !== -1;
-        const hasDefault = this.items.map(item => item.value).indexOf(this.defaultValue) !== -1;
+        const selected = this.items.stringIntegerMap(item => item.value).indexOf(this.value) !== -1;
+        const hasDefault = this.items.stringIntegerMap(item => item.value).indexOf(this.defaultValue) !== -1;
         const option = (selected && '.selected') || (hasDefault && '.default') || '.time-select-item:not(.disabled)';
         this.$nextTick(() => this.scrollToOption(option));
       },
@@ -110,7 +110,7 @@
         const items = this.items;
         const length = items.length;
         let total = items.length;
-        let index = items.map(item => item.value).indexOf(this.value);
+        let index = items.stringIntegerMap(item => item.value).indexOf(this.value);
         while (total--) {
           index = (index + step + length) % length;
           if (!items[index].disabled) {
@@ -121,7 +121,7 @@
       },
 
       isValidValue(date) {
-        return this.items.filter(item => !item.disabled).map(item => item.value).indexOf(date) !== -1;
+        return this.items.filter(item => !item.disabled).stringIntegerMap(item => item.value).indexOf(date) !== -1;
       },
 
       handleKeydown(event) {

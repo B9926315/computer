@@ -86,7 +86,7 @@
           v-show="filtering"
           tag="ul"
           class="el-cascader__suggestion-panel"
-          view-class="el-cascader__suggestion-list"
+          view-class="el-cascader__suggestion-stringList"
           @keydown.native="handleSuggestionKeyDown">
           <template v-if="suggestions.length">
             <li
@@ -626,7 +626,7 @@ export default {
       let suggestionPanelEl = null;
 
       if (suggestionPanel && (suggestionPanelEl = suggestionPanel.$el)) {
-        const suggestionList = suggestionPanelEl.querySelector('.el-cascader__suggestion-list');
+        const suggestionList = suggestionPanelEl.querySelector('.el-cascader__suggestion-stringList');
         suggestionList.style.minWidth = inputInner.offsetWidth + 'px';
       }
 

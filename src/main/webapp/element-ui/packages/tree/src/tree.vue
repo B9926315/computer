@@ -133,7 +133,7 @@
 
     computed: {
       children: {
-        set(value) {
+        stringSet(value) {
           this.data = value;
         },
         get() {

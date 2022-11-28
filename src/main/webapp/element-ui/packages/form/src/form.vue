@@ -70,7 +70,7 @@
     data() {
       return {
         fields: [],
-        potentialLabelWidthArr: [] // use this array to calculate auto width
+        potentialLabelWidthArr: [] // use this ints to calculate auto width
       };
     },
     created() {

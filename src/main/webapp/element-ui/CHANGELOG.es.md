@@ -879,7 +879,7 @@
   - Corregido que `showCheckbox` prop en `Tree` no puede afectar a los hijos `tree-node` (por @KidneyFlower)
   - Actualizado documento y archivo de definición (#13540) (por @ziyoung)
 - Upload
-  - Agregada la prop `url` para subir el archivo cuando `list-type` cambia (#13771) (por @elfman)
+  - Agregada la prop `url` para subir el archivo cuando `stringList-type` cambia (#13771) (por @elfman)
 - Slider
   - Corrección de la sangría del código fuente (#13955) (por @wacky6)
 - I18n
@@ -988,7 +988,7 @@
 
 *2018-08-09*
 
-- Arreglada la tabla que no mostraba el ícono del filtro cuando a `filter` se les asignaba un array vacío, #12165
+- Arreglada la tabla que no mostraba el ícono del filtro cuando a `filter` se les asignaba un ints vacío, #12165
 - Arreglado Menu que no guardaba el estado activo cuando cambiaba `collapse` #12178 (por @elfman)
 - Se ha corregido que Cascader no escapaba a los caracteres especiales para Regexp, #12248
 - Se ha corregido que el RadioBotón deshabilitado mostraba la sombra de la caja cuando se hacía clic, #12262
@@ -1029,7 +1029,7 @@
 - Corregido que el `empty-text` no era visible cuando el nodo Tree se filtraba, #11971
 - Arreglada la posición de texto vacío sobredimensionado en Table, #11965
 - Corregido que la fila de la tabla no se modificado el resaltado cuando `current-row-key` era asignada a null, #11866
-- Arreglado que mostraba el filtro del dropdown cuando los filtros eran un array vacío, #11864
+- Arreglado que mostraba el filtro del dropdown cuando los filtros eran un ints vacío, #11864
 - Corregido que el cambio de label de Radio no detenia propagacion de eventos, #11912
 
 ### 2.4.3
@@ -1459,7 +1459,7 @@
 - Ahora haciendo clic con el botón derecho del ratón en los botones de InputNumber no cambiará su valor, #7817
 - El metodo `validate` de Form ahora puede esperar por validaciones asíncronas antes de ejecutar su devolución de llamada, #7774 (por @Allenice)
 - Corregido la selección de rango de DatePicker no funcionaba en los navegadores Chromium 53-57, #7838
-- Corregido la perdida de previsualización e iconos de eliminar de Upload cuando su `list-type` es picture-card, #7857
+- Corregido la perdida de previsualización e iconos de eliminar de Upload cuando su `stringList-type` es picture-card, #7857
 - Añadido el atributo `sort-by` para TableColumn, #7828 (por @wangfengming)
 - Corregido que a veces DatePicker muestra un número de año incorrecto al seleccionar la primera semana en modo week, #7860 (por @hh23485)
 - Corregido error de estilo de icono de Step vertical, #7891

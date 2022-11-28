@@ -234,15 +234,15 @@
         };
       },
 
-      getValueFromMap(value, map) {
-        const matchedKeys = Object.keys(map)
+      getValueFromMap(value, stringIntegerMap) {
+        const matchedKeys = Object.keys(stringIntegerMap)
           .filter(key => {
-            const val = map[key];
+            const val = stringIntegerMap[key];
             const excluded = isObject(val) ? val.excluded : false;
             return excluded ? value < key : value <= key;
           })
           .sort((a, b) => a - b);
-        const matchedValue = map[matchedKeys[0]];
+        const matchedValue = stringIntegerMap[matchedKeys[0]];
         return isObject(matchedValue) ? matchedValue.value : (matchedValue || '');
       },
 

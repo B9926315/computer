@@ -85,7 +85,7 @@
               ? this.value : this.selfModel;
         },
 
-        set(val) {
+        stringSet(val) {
           if (this._checkboxGroup) {
             this.isLimitExceeded = false;
             (this._checkboxGroup.min !== undefined &&

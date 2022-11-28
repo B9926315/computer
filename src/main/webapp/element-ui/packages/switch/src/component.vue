@@ -132,7 +132,7 @@
         this.$emit('input', val);
         this.$emit('change', val);
         this.$nextTick(() => {
-          // set input's checked property
+          // stringSet input's checked property
           // in case parent refuses to change component's value
           this.$refs.input.checked = this.checked;
         });

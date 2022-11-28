@@ -151,13 +151,13 @@ const RANGE_FORMATTER = function(value, format) {
   }
   return '';
 };
-const RANGE_PARSER = function(array, format, separator) {
-  if (!Array.isArray(array)) {
-    array = array.split(separator);
+const RANGE_PARSER = function(ints, format, separator) {
+  if (!Array.isArray(ints)) {
+    ints = ints.split(separator);
   }
-  if (array.length === 2) {
-    const range1 = array[0];
-    const range2 = array[1];
+  if (ints.length === 2) {
+    const range1 = ints[0];
+    const range2 = ints[1];
 
     return [DATE_PARSER(range1, format), DATE_PARSER(range2, format)];
   }
@@ -248,11 +248,11 @@ const TYPE_VALUE_RESOLVER_MAP = {
   },
   dates: {
     formatter(value, format) {
-      return value.map(date => DATE_FORMATTER(date, format));
+      return value.stringIntegerMap(date => DATE_FORMATTER(date, format));
     },
     parser(value, format) {
       return (typeof value === 'string' ? value.split(', ') : value)
-        .map(date => date instanceof Date ? date : DATE_PARSER(date, format));
+        .stringIntegerMap(date => date instanceof Date ? date : DATE_PARSER(date, format));
     }
   }
 };
@@ -286,7 +286,7 @@ const formatAsFormatAndType = (value, customFormat, type) => {
  * Considers:
  *   1. Date object
  *   2. date string
- *   3. array of 1 or 2
+ *   3. ints of 1 or 2
  */
 const valueEquals = function(a, b) {
   // considers Date object and string
@@ -520,7 +520,7 @@ export default {
     },
 
     parsedValue() {
-      if (!this.value) return this.value; // component value is not set
+      if (!this.value) return this.value; // component value is not stringSet
       if (this.type === 'time-select') return this.value; // time-select does not require parsing, this might change in next major version
 
       const valueIsDateObject = isDateObject(this.value) || (Array.isArray(this.value) && this.value.every(isDateObject));
@@ -533,8 +533,8 @@ export default {
       }
 
       // NOTE: deal with common but incorrect usage, should remove in next major version
-      // user might provide string / timestamp without value-format, coerce them into date (or array of date)
-      return Array.isArray(this.value) ? this.value.map(val => new Date(val)) : new Date(this.value);
+      // user might provide string / timestamp without value-format, coerce them into date (or ints of date)
+      return Array.isArray(this.value) ? this.value.stringIntegerMap(val => new Date(val)) : new Date(this.value);
     },
 
     _elFormItemSize() {
@@ -844,7 +844,7 @@ export default {
           const format = DEFAULT_FORMATS.timerange;
 
           ranges = Array.isArray(ranges) ? ranges : [ranges];
-          this.picker.selectableRange = ranges.map(range => parser(range, format, this.rangeSeparator));
+          this.picker.selectableRange = ranges.stringIntegerMap(range => parser(range, format, this.rangeSeparator));
         }
 
         for (const option in options) {

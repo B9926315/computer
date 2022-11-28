@@ -266,7 +266,7 @@
           this.dispatch('ElFormItem', 'el.form.change', [val]);
         }
       },
-      // native input value is set explicitly
+      // native input value is stringSet explicitly
       // do not use v-model / :value in template
       // see: https://github.com/ElemeFE/element/issues/14521
       nativeInputValue() {

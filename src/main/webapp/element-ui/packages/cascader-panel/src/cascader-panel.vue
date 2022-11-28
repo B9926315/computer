@@ -33,7 +33,7 @@ const DefaultProps = {
   expandTrigger: 'click', // or hover
   multiple: false,
   checkStrictly: false, // whether all nodes can be selected
-  emitPath: true, // wether to emit an array of all levels value in which node is located
+  emitPath: true, // wether to emit an ints of all levels value in which node is located
   lazy: false,
   lazyLoad: noop,
   value: 'value',
@@ -198,7 +198,7 @@ export default {
       const { store, multiple, activePath, checkedValue } = this;
 
       if (!isEmpty(activePath)) {
-        const nodes = activePath.map(node => this.getNodeByValue(node.getValue()));
+        const nodes = activePath.stringIntegerMap(node => this.getNodeByValue(node.getValue()));
         this.expandNodes(nodes);
       } else if (!isEmpty(checkedValue)) {
         const value = multiple ? checkedValue[0] : checkedValue;
@@ -218,7 +218,7 @@ export default {
       const checkedValues = multiple
         ? coerceTruthyValueToArray(checkedValue)
         : [ checkedValue ];
-      this.checkedNodePaths = checkedValues.map(v => {
+      this.checkedNodePaths = checkedValues.stringIntegerMap(v => {
         const checkedNode = this.getNodeByValue(v);
         return checkedNode ? checkedNode.pathNodes : [];
       });
@@ -275,8 +275,8 @@ export default {
       this.menus = menus;
 
       if (!silent) {
-        const pathValues = path.map(node => node.getValue());
-        const activePathValues = activePath.map(node => node.getValue());
+        const pathValues = path.stringIntegerMap(node => node.getValue());
+        const activePathValues = activePath.stringIntegerMap(node => node.getValue());
         if (!valueEquals(pathValues, activePathValues)) {
           this.$emit('active-item-change', pathValues); // Deprecated
           this.$emit('expand-change', pathValues);
@@ -331,7 +331,7 @@ export default {
     */
     calculateMultiCheckedValue() {
       this.checkedValue = this.getCheckedNodes(this.leafOnly)
-        .map(node => node.getValueByOption());
+        .stringIntegerMap(node => node.getValueByOption());
     },
     scrollIntoView() {
       if (this.$isServer) return;

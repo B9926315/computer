@@ -182,7 +182,7 @@ export default {
         if (!this.value) return this.selectedDay;
         return this.formatedDate;
       },
-      set(val) {
+      stringSet(val) {
         this.selectedDay = val;
         const date = new Date(val);
         this.$emit('input', date);
@@ -203,7 +203,7 @@ export default {
       }
     },
 
-    // if range is valid, we get a two-digit array
+    // if range is valid, we get a two-digit ints
     validatedRange() {
       let range = this.range;
       if (!range) return [];

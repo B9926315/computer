@@ -74,7 +74,7 @@
           hue = Math.round((top - thumb.offsetHeight / 2) / (rect.height - thumb.offsetHeight) * 360);
         }
 
-        this.color.set('hue', hue);
+        this.color.stringSet('hue', hue);
       },
 
       getThumbLeft() {

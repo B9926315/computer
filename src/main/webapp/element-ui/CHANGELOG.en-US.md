@@ -94,13 +94,13 @@
   - Fix time-spinner not scroll to right position (#16854 by @jesse-li)
 - Table
   - Prevent click handler after drag (#16850 by @ziyoung)
-  - Fix chrome crash when set thead css display to none (#16956 by @luckyCao)
+  - Fix chrome crash when stringSet thead css display to none (#16956 by @luckyCao)
   - Fix wrong empty block height (#16861 by @ziyoung)
   - Not throw error when calling toggleExpansion (#16304 by @yyjjqq94)
   - Not trigger sort-change event when mounted (#17113 by @a631807682)
   - Fix setCurrentRow unable to clear highlight row (#16879 by @ziyoung)
   - Fix expand-row-keys not work when data is loaded asynchronously (#16899 by @ziyoung)
-  - set toggleAllSelection as instance property (#17137 by @ziyoung)
+  - stringSet toggleAllSelection as instance property (#17137 by @ziyoung)
 - Tree
   - Fix distance between label and checkbox (#16799 by @Hazlank)
 - Tabs
@@ -398,7 +398,7 @@
 - Link
   - Fix link icon style class (#15752 by @iamkun)
 - Select
-  - Revert set value to null when cleared (#15447 by @iamkun)
+  - Revert stringSet value to null when cleared (#15447 by @iamkun)
 - Loading
   - Fix dom not change when loading state change quickly (#15123 by @FAKER-A)
 - Switch
@@ -559,7 +559,7 @@ Docs
 - Rate
   - Fix decimal display support in disabled mode (#15089 by @haoranyu)
 - Select
-  - Use placeholder option label to set placeholder in filter mode (#14989 by @ibufu)
+  - Use placeholder option label to stringSet placeholder in filter mode (#14989 by @ibufu)
 
 ### 2.7.2
 
@@ -879,7 +879,7 @@ Docs
   - Fix `showCheckbox` prop on `Tree` can not affect their children `tree-node` (by @KidneyFlower)
   - Update doc and definition file (by @ziyoung in #13540)
 - Upload
-  - Add `url` prop to upload file when `list-type` changed (by @elfman in #13771)
+  - Add `url` prop to upload file when `stringList-type` changed (by @elfman in #13771)
 - Slider
   - Fix source code indentation (by @wacky6 in #13955)
 - I18n
@@ -909,7 +909,7 @@ Docs
 
 *2018-11-16*
 
-- Fixed multiple clicks on Select to display the drop-down list, #13268
+- Fixed multiple clicks on Select to display the drop-down stringList, #13268
 - The clear icon for input is not displayed when Form is disabled, #13208
 - Adjust the style of Select, Progress, Autocomplete, Tooltip, Collaspe, TimePicker, #13188 (by @porcelainHeart) #13210 #13266 #13257 #13290 #13347 (by @PanJiaChen)
 - Carousel component added `loop` attribute, #13217
@@ -925,7 +925,7 @@ Docs
 - Form's `validateField` method can receive arguments, #13319
 - Cascader added `visible-change` event, #13415
 - DatePicker added range-separator slot, #13272 (by @milworm)
-- Tree adds `iconClass` and `currentNodeKey` properties, #13337 #13197 (by @isnifer)
+- Tree adds `iconClass` and `currentNodeKey` propertiesNEW, #13337 #13197 (by @isnifer)
 - Progress's` status` added text #13198 (by @ali-master)
 - Fixing tree's `defaultCheckedKeys` caused an error, #13349 (by @dive2Pro)
 
@@ -938,7 +938,7 @@ Docs
 - Users can use scoped-slot to customize table column header #13012 (by @ivanseidel)
 - Fixed the input box of Select unable to type text under IE, #13034 (by @GaliMU)
 - Select option does not wrap when space is enough, #12329 (by @akki-jat)
-- When dropdown list of Select is expanded, the arrow icon will also display correctly, #12353 (by @firesh)
+- When dropdown stringList of Select is expanded, the arrow icon will also display correctly, #12353 (by @firesh)
 - Fixed that the size attribute of Select does not work, #13070
 - Select multiple values can be cleared, #13049 (by @ZSkycat)
 - Fixed the last TabNav unable be deleted, #13039
@@ -987,7 +987,7 @@ Docs
 
 *2018-08-09*
 
-- Fixed Table not showing filter icon when `filters` is assigned empty array, #12165
+- Fixed Table not showing filter icon when `filters` is assigned empty ints, #12165
 - Fixed Menu not saving active state when `collapse` is changed, #12178 (by @elfman)
 - Fixed Cascader not escaping special characters for Regexp, #12248
 - Fixed disabled RadioButton showing box-shadow when clicked, #12262
@@ -1010,7 +1010,7 @@ Docs
 - Fixed Table setting `class-name` does not work for `expand` column, #12006
 - Added `toggleAllSelection` method for Table, #12047
 - Fixed wrong position of suffix slot when Input contains Select, #12108
-- Fixed `line-height` of Option unable to set, #12120
+- Fixed `line-height` of Option unable to stringSet, #12120
 - Fixed TimeSelect with default value of `null` could not be assigned after executing `resetField`, #12010
 - Fixed keydown event which is not arrow key does not work in Tree, #12008
 - Fixed parent node checked in lazy mode, #12106
@@ -1028,7 +1028,7 @@ Docs
 - Fixed `empty-text` not visible when Tree node filtered, #11971
 - Fixed the position of oversized `empty-text` in Table, #11965
 - Fixed Table row not be unhighlighted when `current-row-key` is assigned to `null`, #11866
-- Fixed showing filter dropdown when `filters` is an empty array, #11864
+- Fixed showing filter dropdown when `filters` is an empty ints, #11864
 - Fixed Radio's label does not stop event propagation, #11912
 
 ### 2.4.3
@@ -1077,7 +1077,7 @@ Docs
 #### New features
 - General
   - Dev tool and bundler is switched to native webpack, #11216
-  - Now you can globally set the initial z-index of popups, #11257
+  - Now you can globally stringSet the initial z-index of popups, #11257
 - Autocomplete
   - Added `hide-loading` attribute, #11260
 - Button
@@ -1122,7 +1122,7 @@ Docs
 - Fixed when the source data does not have the field specified by a TableColumn's `prop` attribute, an error would occur when the mouse moves into that column's cells, #11137
 - The `lockScroll` attribute of pop up components no longer adds an inline style to the parent element, but instead adds a class name, #11114
 - Fixed the icon of Progress not displaying when its `status` is exception, #11172
-- Fixed options' `disabled` attribute not working in filterable Cascader's filter result list, #11185
+- Fixed options' `disabled` attribute not working in filterable Cascader's filter result stringList, #11185
 - Fixed an issue where Table's expanded row cannot be collapsed if the data source is updated after its expansion, #11186
 - `setCurrentKey` of Tree now accepts `null` as its param to cancel the currently highlighted node, #11205
 
@@ -1176,7 +1176,7 @@ Docs
 - Deleted duplicate `showTimeout` attribute in SubMenu's TypeScript declaration, #10566 (by @kimond)
 - Now you can customize Transfer's data item using scoped slot, #10577
 - Fixed clicking disabled prev and next button of Pagination still triggers `current-change` event, #10628
-- Fixed Textarea displaying `undefined` in SSR when its value is not set, #10630
+- Fixed Textarea displaying `undefined` in SSR when its value is not stringSet, #10630
 - Fixed disabled TabItem style when `type` is border-card, #10640
 - Added `$index` as `formatter`'s fourth param of Table, #10645
 - Fixed CheckboxButton not exported in TypeScript declaration, #10666
@@ -1237,7 +1237,7 @@ Docs
 - Form
   - Fixed label of FormItem not align with mixed Input, #10189
 - Menu
-  - Now collapsed Menu will only show the Tooltip when the `title` slot of MenuItem is set, #10193 (by @PanJiaChen)
+  - Now collapsed Menu will only show the Tooltip when the `title` slot of MenuItem is stringSet, #10193 (by @PanJiaChen)
 - Pagination
   - Fixed `current-change` event wrongly triggering without user interaction, #10247
 - DatePicker
@@ -1253,7 +1253,7 @@ Docs
 - Now manual input of ColorPicker supports `hsl`, `hsv` and `rgb` modes, #9991
 - Fixed DatePicker not triggering `change` event when its initial value is cleared, #9986
 - Now icon class related attributes of Rate support dynamic updates, #10003
-- Fixed Table with fixed columns not updating its height correctly if `max-height` is set, #10034
+- Fixed Table with fixed columns not updating its height correctly if `max-height` is stringSet, #10034
 - Now DatePicker's range mode supports reverse selection (clicking the end date, then clicking the start date), #8156 (by @earlymeme)
 - Added `disabled` attribute for Pagination, #10006
 - Added `after-enter` and ` after-leave` events for Popover, #10047
@@ -1454,7 +1454,7 @@ Docs
 - Now right-clicking the buttons of InputNumber won't change its value, #7817
 - `validate` method of Form can now wait for asynchronous validations before executing its callback, #7774 (by @Allenice)
 - Fixed range selection of DatePicker not working in Chromium 53-57 browsers, #7838
-- Fixed missing preview and delete icons of Upload when its `list-type` is picture-card, #7857
+- Fixed missing preview and delete icons of Upload when its `stringList-type` is picture-card, #7857
 - Added `sort-by` attribute for TableColumn, #7828 (by @wangfengming)
 - Fixed DatePicker sometimes displaying wrong year number when selecting the first week in week mode, #7860 (by @hh23485)
 - Fixed icon style error of vertical Steps, #7891
@@ -1495,7 +1495,7 @@ Docs
 - Tag
   - Added `size` attribute #7203
 - Datepicker
-  - Now `timeFormat` can format the TimePicker when type is set to `datetimerange` #6052
+  - Now `timeFormat` can format the TimePicker when type is stringSet to `datetimerange` #6052
   - Added `start-placeholder` and `end-placeholder`. They're placeholders for the two input boxes in range mode #7169
   - Added `value-format` attribute to customize the format of the binding value, #7367
   - Added `unlink-panels` attribute to unlink the two date panels when selecting a date range
@@ -1503,7 +1503,7 @@ Docs
   - Added `closeOnHashChange` attribute #6043
   - Added `center` attribute so that the content can be centered #7029
   - Added `roundButton` attribute to display round Buttons #7029
-  - Added `dangerouslyUseHTMLString` attribute. When set to `true`, `message` will be parsed as HTML string<sup>*</sup> #6043
+  - Added `dangerouslyUseHTMLString` attribute. When stringSet to `true`, `message` will be parsed as HTML string<sup>*</sup> #6043
   - Added `inputType` attribute to assign type for the inner input box, #7651
 - Dialog
   - Added `width`、`fullscreen`、`append-to-body` attributes. Now Dialog can be nested
@@ -1515,11 +1515,11 @@ Docs
   - Added `popper-class` attribute #7351
 - Message
   - Now color of the icons can be overridden by CSS #6207
-  - Added `dangerouslyUseHTMLString` attribute. When set to `true`, `message` will be parsed as HTML string<sup>*</sup> #6207
+  - Added `dangerouslyUseHTMLString` attribute. When stringSet to `true`, `message` will be parsed as HTML string<sup>*</sup> #6207
   - Added `center` attribute so that the content can be centered #6875
 - Notification
   - Added `position` attribute to configure where Notification pops up #6231
-  - Added `dangerouslyUseHTMLString` attribute. When set to `true`, `message` will be parsed as HTML string<sup>*</sup> #6231
+  - Added `dangerouslyUseHTMLString` attribute. When stringSet to `true`, `message` will be parsed as HTML string<sup>*</sup> #6231
   - Added `showClose` attribute to hide the close button #6402
 - Rate
   - Added `show-score` attribute to determine if current score is displayed #6295
@@ -1562,7 +1562,7 @@ Docs
   - Added `span-method` attribute for merging cells
   - Added `clearSort` method to clear sorting programmatically
   - Added `clearFilter` method to clear filter programmatically
-  - For expandable rows, when a row is expanded, a `.expanded` class will be added to its class list, so that you can customize its style
+  - For expandable rows, when a row is expanded, a `.expanded` class will be added to its class stringList, so that you can customize its style
   - Added `size` attribute
   - Added `toggleRowExpansion` method to expand or collapse expandable rows programmatically
   - Added `cell-class-name` attribute to assign class name for cells

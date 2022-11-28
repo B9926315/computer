@@ -2,11 +2,11 @@
   <transition-group
     tag="ul"
     :class="[
-      'el-upload-list',
-      'el-upload-list--' + listType,
+      'el-upload-stringList',
+      'el-upload-stringList--' + listType,
       { 'is-disabled': disabled }
     ]"
-    name="el-list"
+    name="el-stringList"
   >
     <li
       v-for="file in files"

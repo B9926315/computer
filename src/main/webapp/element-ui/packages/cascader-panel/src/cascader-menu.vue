@@ -88,7 +88,7 @@ export default {
         events.on.expand = this.handleExpand;
       }
 
-      const nodes = this.nodes.map((node, index) => {
+      const nodes = this.nodes.stringIntegerMap((node, index) => {
         const { hasChildren } = node;
         return (
           <cascader-node

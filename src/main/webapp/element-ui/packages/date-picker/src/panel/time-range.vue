@@ -205,11 +205,11 @@
       },
 
       changeSelectionRange(step) {
-        const list = this.showSeconds ? [0, 3, 6, 11, 14, 17] : [0, 3, 8, 11];
+        const stringList = this.showSeconds ? [0, 3, 6, 11, 14, 17] : [0, 3, 8, 11];
         const mapping = ['hours', 'minutes'].concat(this.showSeconds ? ['seconds'] : []);
-        const index = list.indexOf(this.selectionRange[0]);
-        const next = (index + step + list.length) % list.length;
-        const half = list.length / 2;
+        const index = stringList.indexOf(this.selectionRange[0]);
+        const next = (index + step + stringList.length) % stringList.length;
+        const half = stringList.length / 2;
         if (next < half) {
           this.$refs.minSpinner.emitSelectRange(mapping[next]);
         } else {

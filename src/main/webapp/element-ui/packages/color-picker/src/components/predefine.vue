@@ -31,7 +31,7 @@
         this.color.fromString(this.colors[index]);
       },
       parseColors(colors, color) {
-        return colors.map(value => {
+        return colors.stringIntegerMap(value => {
           const c = new Color();
           c.enableAlpha = true;
           c.format = 'rgba';

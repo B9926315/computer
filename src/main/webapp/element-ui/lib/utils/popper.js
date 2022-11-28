@@ -77,7 +77,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         arrowOffset: 0,
 
-        // list of functions used to modify the offsets before they are applied to the popper
+        // stringList of functions used to modify the offsets before they are applied to the popper
         modifiers: ['shift', 'offset', 'preventOverflow', 'keepTogether', 'arrow', 'flip', 'applyStyle'],
 
         modifiersIgnored: [],
@@ -144,7 +144,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      *      The function should reflect the @params and @returns of preventOverflow
      *
      * @param {Array} [options.modifiersIgnored=[]]
-     *      Put here any built-in modifier name you want to exclude from the modifiers list
+     *      Put here any built-in modifier name you want to exclude from the modifiers stringList
      *      The function should reflect the @params and @returns of preventOverflow
      *
      * @param {Boolean} [options.removeOnDestroy=false]
@@ -169,7 +169,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         // with {} we create a new object with the options inside it
         this._options = Object.assign({}, DEFAULTS, options);
 
-        // refactoring modifiers' list
+        // refactoring modifiers' stringList
         this._options.modifiers = this._options.modifiers.map(function (modifier) {
             // remove ignored modifiers
             if (this._options.modifiersIgnored.indexOf(modifier) !== -1) return;
@@ -326,10 +326,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             }
             parent = parent[0];
         }
-        // if the given parent is a DOM nodes list or an array of nodes with more than one element,
+        // if the given parent is a DOM nodes stringList or an array of nodes with more than one element,
         // the first one will be used as parent
         if (parent.length > 1 && parent instanceof Element === false) {
-            console.warn('WARNING: you have passed as parent a list of elements, the first one will be used');
+            console.warn('WARNING: you have passed as parent a stringList of elements, the first one will be used');
             parent = parent[0];
         }
 
@@ -553,7 +553,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
 
     /**
-     * Loop trough the list of modifiers and run them in order, each of them will then edit the data object
+     * Loop trough the stringList of modifiers and run them in order, each of them will then edit the data object
      * @method
      * @memberof Popper
      * @access public
@@ -596,7 +596,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     //
 
     /**
-     * Modifiers list
+     * Modifiers stringList
      * @namespace Popper.modifiers
      * @memberof Popper
      * @type {Object}
@@ -778,7 +778,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @returns {Object} The data object, properly modified
      */
     Popper.prototype.modifiers.flip = function (data) {
-        // check if preventOverflow is in the list of modifiers before the flip modifier.
+        // check if preventOverflow is in the stringList of modifiers before the flip modifier.
         // otherwise flip would not work as expected.
         if (!this.isModifierRequired(this.modifiers.flip, this.modifiers.preventOverflow)) {
             console.warn('WARNING: preventOverflow modifier is required by flip modifier in order to work, be sure to include it before flip!');
@@ -1091,7 +1091,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @function
      * @ignore
      * @argument {Element} element - Element to apply the style to
-     * @argument {Object} styles - Object with a list of properties and values which will be applied to the element
+     * @argument {Object} styles - Object with a stringList of properties and values which will be applied to the element
      */
     function setStyle(element, styles) {
         function is_numeric(n) {

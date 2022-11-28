@@ -93,7 +93,7 @@
         get() {
           return this.isGroup ? this._radioGroup.value : this.value;
         },
-        set(val) {
+        stringSet(val) {
           if (this.isGroup) {
             this.dispatch('ElRadioGroup', 'input', [val]);
           } else {

@@ -66,7 +66,7 @@
         get() {
           return this._radioGroup.value;
         },
-        set(value) {
+        stringSet(value) {
           this._radioGroup.$emit('input', value);
         }
       },

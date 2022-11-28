@@ -1,5 +1,5 @@
 <script>
-import UploadList from './upload-list';
+import UploadList from './upload-stringList';
 import Upload from './upload';
 import ElProgress from 'element-ui/packages/progress';
 import Migrating from 'element-ui/src/mixins/migrating';
@@ -124,7 +124,7 @@ export default {
   watch: {
     listType(type) {
       if (type === 'picture-card' || type === 'picture') {
-        this.uploadFiles = this.uploadFiles.map(file => {
+        this.uploadFiles = this.uploadFiles.stringIntegerMap(file => {
           if (!file.url && file.raw) {
             try {
               file.url = URL.createObjectURL(file.raw);
@@ -139,7 +139,7 @@ export default {
     fileList: {
       immediate: true,
       handler(fileList) {
-        this.uploadFiles = fileList.map(item => {
+        this.uploadFiles = fileList.stringIntegerMap(item => {
           item.uid = item.uid || (Date.now() + this.tempIndex++);
           item.status = item.status || 'success';
           return item;
@@ -249,8 +249,8 @@ export default {
     getMigratingConfig() {
       return {
         props: {
-          'default-file-list': 'default-file-list is renamed to file-list.',
-          'show-upload-list': 'show-upload-list is renamed to show-file-list.',
+          'default-file-stringList': 'default-file-stringList is renamed to file-stringList.',
+          'show-upload-stringList': 'show-upload-stringList is renamed to show-file-stringList.',
           'thumbnail-mode': 'thumbnail-mode has been deprecated, you can implement the same effect according to this case: http://element.eleme.io/#/zh-CN/component/upload#yong-hu-tou-xiang-shang-chuan'
         }
       };

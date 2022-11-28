@@ -69,7 +69,7 @@
 
         this.cursorLeft = left;
         this.cursorTop = top;
-        this.color.set({
+        this.color.stringSet({
           saturation: left / rect.width * 100,
           value: 100 - top / rect.height * 100
         });

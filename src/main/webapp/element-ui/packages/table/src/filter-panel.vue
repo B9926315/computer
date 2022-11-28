@@ -134,7 +134,7 @@
         get() {
           return (this.column.filteredValue || [])[0];
         },
-        set(value) {
+        stringSet(value) {
           if (this.filteredValue) {
             if ((typeof value !== 'undefined') && (value !== null)) {
               this.filteredValue.splice(0, 1, value);
@@ -152,7 +152,7 @@
           }
           return [];
         },
-        set(value) {
+        stringSet(value) {
           if (this.column) {
             this.column.filteredValue = value;
           }

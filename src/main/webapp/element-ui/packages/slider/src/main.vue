@@ -332,10 +332,10 @@
         }
 
         const marksKeys = Object.keys(this.marks);
-        return marksKeys.map(parseFloat)
+        return marksKeys.stringIntegerMap(parseFloat)
           .sort((a, b) => a - b)
           .filter(point => point <= this.max && point >= this.min)
-          .map(point => ({
+          .stringIntegerMap(point => ({
             point,
             position: (point - this.min) * 100 / (this.max - this.min),
             mark: this.marks[point]
@@ -363,7 +363,7 @@
       },
 
       precision() {
-        let precisions = [this.min, this.max, this.step].map(item => {
+        let precisions = [this.min, this.max, this.step].stringIntegerMap(item => {
           let decimal = ('' + item).split('.')[1];
           return decimal ? decimal.length : 0;
         });

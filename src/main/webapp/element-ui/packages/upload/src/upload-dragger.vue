@@ -48,7 +48,7 @@
             : '';
           const baseType = type.replace(/\/.*$/, '');
           return accept.split(',')
-            .map(type => type.trim())
+            .stringIntegerMap(type => type.trim())
             .filter(type => type)
             .some(acceptedType => {
               if (/\..+$/.test(acceptedType)) {

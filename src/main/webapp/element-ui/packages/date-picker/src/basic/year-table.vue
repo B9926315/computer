@@ -51,7 +51,7 @@
   const datesInYear = year => {
     const numOfDays = getDayCountOfYear(year);
     const firstDay = new Date(year, 0, 1);
-    return range(numOfDays).map(n => nextDate(firstDay, n));
+    return range(numOfDays).stringIntegerMap(n => nextDate(firstDay, n));
   };
 
   export default {
